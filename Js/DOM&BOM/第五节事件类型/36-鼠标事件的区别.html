@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #box{
+            margin: 50px 200px;
+            padding: 100px;
+            box-sizing: border-box;
+            border: 1px salmon solid;
+        }
+        p{
+            border: 2px solid saddlebrown;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <p>感谢我自己还在努力学东西1</p>
+        <p>感谢我自己还在努力学东西2</p>
+        <p>感谢我自己还在努力学东西3</p>
+        <p>感谢我自己还在努力学东西4</p>
+        <p>感谢我自己还在努力学东西5</p>
+        <p>感谢我自己还在努力学东西6</p>
+        <p>感谢我自己还在努力学东西7</p>
+        <p>感谢我自己还在努力学东西8</p>
+    </div>
+    <script>
+        (function(){
+            window.onload = function(){
+                var box =document.getElementById('box');
+                box.addEventListener('mousedown',function(){
+                    console.log("1mousedown")//最先执行
+                },false);
+                box.addEventListener('mouseup',function(){
+                    console.log("2mouseup")// 其次执行
+                },false);
+                //如果鼠标不在当前元素上up，那么久不会触发click 事件；
+                box.addEventListener('click',function(){
+                    console.log("3click")// 最后执行
+                },false);
+
+
+//  <!-- mouseenter和mouseleave-->
+                //当鼠标进入元素范围内部的时候，只执行一次;不会冒泡
+                box.addEventListener('mouseenter',function(){
+                    console.log("mouseenter");
+                },false);
+                //当鼠标离开元素范围内部的时候，只执行一次;不会冒泡
+                box.addEventListener('mouseleave',function(){
+                    console.log("mouseleave");
+                },false);
+
+//  <!-- mouseover和 mouseout-->
+                 //当鼠标在元素及子元素上的时候会触发，触发多次，冒泡；
+                box.addEventListener('mouseover',function(){
+                        console.log("mouseover");
+                },false);
+                box.addEventListener('mouseout',function(){
+                        console.log("mouseout");
+                },false);
+            }
+        })()
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTMLCollection 接口解密</title>
+</head>
+<body>
+    <p>1hello</p>
+    <p>2hello</p>
+    <p>3hello</p>
+    <div class="pss1">hi1</div>
+    <div class="pss2">hi2</div>
+    <div class="pss3">hi3</div>
+    <div class="pss4">hi4</div>
+<script>
+    //把所有的标签都获取出来
+    var all = document.getElementsByTagName('*');
+    //all =>HTMLcollection
+    for(var  i = 0;i<all.length;i++){
+        console.log(all[i])
+    }
+</script>
+</body>
+</html>

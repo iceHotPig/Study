@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件委托案例</title>
+    <style>
+        ul{
+            list-style: none;
+        }
+        li{
+            padding: 10px 0;
+            border: 1px saddlebrown solid;
+            width: 200px;
+            cursor: pointer;
+        }
+    </style>
+    <script src="../js/documentReady.js"></script>
+    <script src="../js/EventUtil.js"></script>
+</head>
+<body>
+    <ul id="list">
+        <li>我是li标签1</li>
+        <li>我是li标签2</li>
+        <li>我是li标签3</li>
+        <li>我是li标签4</li>
+        <li>我是li标签5</li>
+        <li>我是li标签6</li>
+        <li>我是li标签7</li>
+        <li>我是li标签8</li>
+        <li>我是li标签9</li>
+    </ul>
+    <script>
+        (function(){
+            document.myReady(function(){
+                //拿到所有的li标签绑定事件
+                var oUl = document.getElementById('list');
+                var oLi = oUl.getElementsByTagName('li');
+                //这种方式的问题：
+                //1，后来动态添加的li标签，不能绑定事件绑定程序；
+                //2,li标签很多的时候，会产生很多绑定信息，很浪费内存;
+                // for(var i = 0;i < oLi.length;i++){
+                //     EventUtil.addEvent(oLi[i],'click',function(){
+                //         console.log(this.innerHTML);
+                //     })
+                // }
+                //解决上面的问题；
+                //1事件是有冒泡的；
+                //2弹出事件源对象的内容 e.target||e.srcElement ；
+                //3getElementsByTagName, 返回的伪数组是一个动态的;会自动更新；
+                //子元素的事件委托父容器来进行注册来处理
+                EventUtil.addEvent(oUl,'click',function(e){
+                    var target = EventUtil.getTarget(e);
+                    //如果是父元素点击了自己，那就直接什么都不做；
+                    //如果点击的是子元素就弹出自己的内容；
+                    if(target==this){
+                        return;
+                    }
+                    //如果点击的是子元素，则执行下面的函数；
+                    console.log(target.innerHTML);
+                })
+            });// end for myReady
+        })();
+    </script>
+</body>
+</html>

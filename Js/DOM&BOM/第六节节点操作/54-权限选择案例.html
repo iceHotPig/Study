@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>权限选择案例</title>
+    <style>
+        select{
+            width: 100px;
+            height: 200px;
+            float: left;
+        }
+        #box{
+            float: left;
+            width: 100px;
+            text-align: center;
+        }
+        #box input{
+            width: 51px;
+        }
+    </style>
+    <script src="../js/documentReady.js"></script>
+    <script src="../js/EventUtil.js"></script>
+</head>
+<body>
+    <select name="l" id="l" multiple ="multiple">
+        <option value="1">添加商品</option>
+        <option value="2">读取商品</option>
+        <option value="3">修改商品</option>
+        <option value="4">删除订单</option>
+        <option value="5">用户查看</option>
+    </select>
+    <div id="box">
+        <input type="button" value=">" dir="add">
+        <input type="button" value=">>" dir="addAll">
+        <input type="button" value="<" dir="del">
+        <input type="button" value="<<" dir="delAll">
+    </div>
+    <select name="r" id="r" multiple ="multiple"></select>         
+    <script>
+        (function(){
+            document.myReady(function(){
+                //给四个按钮绑定事件；
+                //利用时间事件委托；
+                //获取box节点；
+                var box =document.getElementById('box');
+                EventUtil.addEvent(box, 'click', function(e){
+                    //获取事件源对象
+                    var target = EventUtil.getTarget(e);
+                    //判断源对象是否是box本身，如果是则不执行任何事件处理对象；
+                    if(target == this){
+                        return;
+                    };
+                    //用dir属性去分四个按键
+                    //区分四个按钮的事件处理对象；
+                    var dir = target.getAttribute('dir');
+                    console.log(dir);
+                    var l = document.getElementById('l');
+                    var r = document.getElementById('r');
+                    switch(dir){
+                        case 'add' :
+                            add(false,l,r);//从左向右添加option;
+                             break;
+                        case 'addAll' :
+                            add(true,l,r);//从左全部加到右
+                            break;
+                        case 'del' :  
+                            add(false,r,l);
+                            break;
+                        case 'delAll':    
+                            add(true,r,l);
+                            break;
+                    };
+                });
+                function add(isAll,sel1,sel2){
+                        //把sel1放到sel2里面去
+                        var tempArr = [];  
+                        for(var i=0;i<sel1.options.length;i++){
+                            if(isAll || sel1.options[i].selected){
+                                tempArr.push(sel1.options[i]); 
+                            }
+                        };
+                        //把获得的数据放到sel2里面；
+                        while(tempArr.length>0){    
+                             var opt = tempArr.pop();
+                             //ie8:如果选项没有从第一个sel1里面删除，直接追加到sel2中
+                             //会报错
+                             sel1.remove(opt.index);
+                             sel2.add(opt,null)
+                        }
+                    }
+            });//myReady
+        })();
+    </script>
+</body>
+</html> 

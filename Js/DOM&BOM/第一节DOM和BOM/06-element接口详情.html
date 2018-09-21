@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Element 接口详情</title>
+</head>
+<body>
+    <!-- 
+        
+     -->
+     <div id="d1" class="ts"  data-laoma="123">
+         <span>hello word</span>
+         <p>你好的啊</p>
+     </div>
+     <script>
+         //获取id =d1的div标签
+         var d1 = document.getElementById("d1");
+         console.log(d1.attributes);
+         d1.setAttribute('data-laoma','sss');
+         console.log(d1.getAttribute('data-laoma'));
+         console.log(d1.getAttribute('id'));
+         console.log(d1.getAttribute('class'));
+         console.log(d1.id);
+         console.log(d1.className);
+         d1.removeAttribute('data-laoma')
+     </script>
+</body>
+</html>

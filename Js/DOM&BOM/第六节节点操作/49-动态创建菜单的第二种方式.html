@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../js/documentReady.js"></script>
+    <script src="../js/EventUtil.js"></script>
+</head>
+<body>
+    <ul id="menu"> </ul> 
+    <script>
+        (function(){
+            var data =[
+                    {name : "首页",url:"/index.html",id:1},
+                    {name : "关于",url:"/about.html",id:2},
+                    {name : "产品",url:"/products.html",id:3},
+                    {name : "案例",url:"/example.html",id:4},
+                    {name : "联系",url:"/contact.html",id:5}
+                ];
+            //页面加在完成后动态添加li标签数据
+            document.myReady(function(){
+                loadMenu();
+            });
+            function loadMenu(){
+                var strArr = [];
+                //使用innerHTML的方法，字符串拼接
+                var menu = document.getElementById('menu');
+                for(var i = 0; i<data.length; i++){
+                    var str ='<li id="menu'+data[i].id+'">';
+                        str +='<a href="'+data[i].url+'">'+data[i].name+'</a>';
+                        str +='</li>';
+                         // menu.innerHTML +=str;//每次创建一个li标签都会让dom更新一次，效率太低
+                        strArr.push(str);
+                }
+                menu.innerHTML = strArr.join('');//dom 只执行一次；效率高；
+            }
+        })()
+    </script>
+</body>
+</html>

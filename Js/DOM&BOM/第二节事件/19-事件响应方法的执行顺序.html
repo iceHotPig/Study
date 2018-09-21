@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件响应方法的执行顺序</title>
+</head>
+<body>
+<input type="button" value="点击" id="btn">
+<script>
+    var btn = document.getElementById('btn');
+
+    //DOM 2级
+    if(btn.addEventListener){
+        btn.addEventListener('click',function(){
+            alert("DOM 2级 -1")
+        },false);
+        btn.addEventListener('click',function(){
+            alert("DOM 2级 -2")
+        },false);
+        btn.addEventListener('click',function(){
+            alert("DOM 2级 -3")
+        },false);
+    }else if(btn.attachEvent){
+        btn.attachEvent('onclick',function(){
+            alert("DOM 2级IE -1")
+        });
+        btn.attachEvent('onclick',function(){
+            alert("DOM 2级IE -2")
+        });
+        btn.attachEvent('onclick',function(){
+            alert("DOM 2级IE -3")
+        });
+    }
+    //DOM 0级
+    btn.onclick  = function(){
+        alert("DOM 0级")
+    }
+</script>
+</body>
+</html>

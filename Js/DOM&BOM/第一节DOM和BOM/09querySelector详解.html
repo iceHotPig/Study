@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>querySelector 详解</title>
+</head>
+<body>
+    <div class="c1">第一个div </div>
+    <p class="p1">这里是一个p1标签</p>
+    <p class="p1">这里是一个p2标签</p>
+    <p class="p1">这里是一个p3标签</p>
+    <p class="p1">这里是一个p4标签</p>
+    <p class="p1">这里是一个p5标签</p>
+    <p id="p2">这里有好上好水</p>
+
+   
+    <script>
+        //ie8及以上的浏览器
+        var c1 = document.querySelector('.c1');
+        console.dir(c1);
+        var p1 = document.querySelector('.p1');
+        console.dir(p1);
+        var  p2 = document.querySelector('#p2');
+        console.dir(p2);
+
+        //选择所有包含p1样式的标签;
+        var p11 = document.querySelectorAll('.p1');
+        //返回的是nodeList接口的实例；nodeList的原型是object.prototype;
+        console.dir(p11);
+        p11.forEach(function(item,index,items){
+            console.log(item);//第一个参数是数组的元素
+            console.log(index);//第二个参数是数组的元素对应的索引
+            console.log(items);//第三个参数是数组本身;
+        });
+    </script>
+</body>
+</html> 

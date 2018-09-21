@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件的位置信息</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box-wrap{
+            height: 300px;
+            width: 300px;
+            background-color:wheat;
+            text-align: center;
+            
+        }
+        .box{
+            margin-top: 50px;
+            display: inline-block;
+            height: 200px;
+            width: 200px;
+            background-color: #e3e3e3;
+        }
+    
+    </style>
+</head>
+<body>
+    <div class="box-wrap" id="boxWrap">
+        <div class="box" id="box"></div>
+    </div>
+    <div style="height:1000px"></div>
+    <script>
+        (function(){
+            window.onload=function(){
+                var boxWrap = document.getElementById('boxWrap');
+                var box = document.getElementById('box');
+                boxWrap.onclick = function(e){
+                    console.log(e);
+                }
+            }
+        })()
+    </script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/minireset.css/0.0.2/minireset.css">
+    <style>
+        .wrap{
+            height: 500px;
+            width: 400px;
+            margin: 200px auto;
+            padding: 20px;
+        }
+        .box{
+            height: 300px;
+            width: 300px;
+            border: 1px saddlebrown solid;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <input type="button" value="折叠" id="btnSliderUP">
+        <input type="button" value="展开" id="btnSliderDown">
+        <div class="box" id="box">
+            我是box
+        </div>
+    </div>
+    <script>
+        (function(){
+            window.onload = function(){
+                var btnSliderUP = document.getElementById('btnSliderUP'), 
+                  btnSliderDown = document.getElementById('btnSliderDown'),
+                            box = document.getElementById('box'); 
+                //点击btnSliderUP让div一点一点的折叠起来;
+                btnSliderUP.onclick = function(){
+                    var start = Date.now();//返回当前的时间，utc时间，1970距今的毫秒数；
+                    var originHeight = box.clientHeight;//拿到div的显示的高度；
+                    //随着时间的推移，让div的高度一点一点的变小，最后为0；
+                    //要求一秒钟后div消失；
+                    var timer = setInterval(function(){
+                        // var now = Date.now();
+                        // console.log(now-start);
+                        // start = now;
+                        //思路一：利用时间差:now-start;
+                        //思路二：当前时间和一开始的时间进行计算，把相差的总时间换算成减少的高度，然后设置div的高度；
+                        var now = Date.now();
+                        var minusHeight =(now-start)*originHeight/1000;//减少的高度；
+                        box.style.height =(originHeight - minusHeight) +"px";
+                        if(originHeight <= minusHeight){
+                            box.style.height = originHeight +"px";
+                            box.style.display= 'none';
+                            clearInterval(timer);
+                        }
+                    },1000/60)
+                    // 问题：1000/60 setInterval执行不是严格的按照时间间隔执行的；
+                }
+                btnSliderDown.onclick = function(){
+                    //如果display为none时 clientHeight为0；
+                    // box.style.display = 'block';
+                    // var boxHeight = box.clientHeight;
+                    // box.style.height = '0px';
+                    // var start = Date.now();//开始的时间；
+                    // var timer = setInterval(function(){
+                    //    var now = Date.now();
+                    //    var nowHeight = (now-start)*boxHeight/500;//现在的高度
+                    //    box.style.height = nowHeight +'px';
+                    //    if(nowHeight >= boxHeight ){
+                    //         box.style.height = boxHeight +"px";
+                    //         clearInterval(timer);
+                    //    }
+                    // },1000/60);
+                    sliderDown(box,300);
+                }                            
+            
+                /**
+                 * @description 进行向下展开的函数
+                 * @param {HTMLElement} element -要进行动画的标签；
+                 * @param {number} duration - 动画持续的时间；
+                 * @retrun {undefiend} 
+                 **/
+                function sliderDown(element,duration){
+                    var start = Date.now();//开始动画的时间；
+                    element.style.display = "block";
+                    var originH = element.clientHeight;
+                    element.style.height = "0px";
+                    var timer = setInterval(function(){
+                        var now = Date.now();
+                        element.style.height = (now-start)*originH/duration + "px";
+                        if(now-start>=duration){
+                            element.style.height = originH + "px";
+                            clearInterval(timer);
+                        }
+                    },1000/60);
+                }
+            }
+        })()
+    </script>
+</body>
+</html>

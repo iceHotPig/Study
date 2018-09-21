@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>onload 事件</title>
+</head>
+<body>
+    <!-- 第一情况 -->
+    <!-- <input type="button" value="点击" id="btn">
+    <script>
+        var btn = document.getElementById('btn');
+        btn.addEventListener('click',function(){
+            console.log(1)
+        })
+    </script> -->
+
+    <!-- 第二种情况 -->
+    <!-- <script>
+        var btn = document.getElementById('btn');
+        btn.addEventListener('click',function(){
+            console.log(1)
+        })
+    </script>
+    <input type="button" value="点击" id="btn"> -->
+
+    <!-- 第三种情况 -->
+    <script>
+        //页面的内容全部加载完成后，才会触发事件;
+        window.onload = function(){
+            var btn = document.getElementById('btn');
+            btn.addEventListener('click',function(){
+                console.log(1)
+            });
+        }
+    </script>
+    <input type="button" value="点击" id="btn">
+    
+</body>
+</html>

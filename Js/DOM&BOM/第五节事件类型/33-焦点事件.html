@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>焦点事件</title>
+</head>
+<body>
+    <input type="text" id="txt1">
+    <input type="text" id="txt2">
+    <input type="button" id="btn" value="点击获得焦点" >
+    <script>
+        window.onload = function(){
+            var  txt1 = document.getElementById('txt1');
+            txt1.onfocus = function(){
+                console.log('txt1 get focus')
+            };
+            txt1.onblur = function(){
+                console.log('txt1 lost focus')
+            };
+            document.getElementById('btn').onclick = function(){
+                document.getElementById('txt2').focus();
+            };
+            var txt2 = document.getElementById('txt2');
+            txt2.onblur = function(){
+                if(!txt2.value){
+                    txt2.focus();
+                    txt2.style.borderColor = 'red';
+                }else{
+                    txt2.style.borderColor = '';
+                }
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绑定事件</title>
+</head>
+<body>
+    <p onclick=" alert(1)" style="cursor: pointer;">点击我</p>
+    <!-- 事件的三要素:
+        事件源：p
+        事件名：onclick
+        事件的行为：window.alert(1)；
+    -->
+    <!-- 代码的方式绑定事件 -->
+    <!-- 推荐使用 -->
+    <p id="p" style="cursor: pointer;">我是一段文字，请点击我</p>
+    <script>
+        var  p = document.getElementById('p');
+        p.onclick = function(){
+            //在事件的响应方法中，this指向当前事件的原对象
+            alert(this.innerHTML);
+        }
+        //这种绑定事件的方式只能绑定一个方法；
+    </script>
+</body>
+</html>

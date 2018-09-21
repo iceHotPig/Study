@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        div{
+            border: 1px solid #ccc;
+        }
+        .parent{
+            height: 200px;
+            width: 200px;
+            background: #87c;
+            padding: 30px;
+        }
+        .child{
+            height: 100px;
+            width: 100px;
+            background-color: #4d4d4d;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        我是父元素
+        <div class="child">
+            我是子元素
+        </div>
+    </div>
+    <script>
+        //点击子元素时，父元素所绑定的事假也会执行，原因：事件冒泡
+        //给父元素添加一个事件。
+        var  parentDiv = document.querySelector('.parent');
+        parentDiv.onclick = function(){
+            alert('父元素执行了')
+        }
+        document.onclick = function(){
+            alert('document素执行了')
+        }
+    </script>
+</body>
+</html>

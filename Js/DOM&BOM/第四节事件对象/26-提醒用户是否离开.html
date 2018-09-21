@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>提醒用户是否离开</title>
+</head>
+<body>
+    <form action="http://aicoder.com">
+        <input type="text" id="txtName">
+        <input type="submit" value="提交" id="btnSub">
+    </form>
+    <script>
+        window.onbeforeunload = function(){
+            return "你是否要离开？"//返回一个字符串浏览器在跳转其他页面或者关闭的的时候会提示信息；
+        }
+        var btnSub = document.getElementById("btnSub"),
+           txtName = document.getElementById("txtName");
+        //    btnSub.onclick = function(){
+        //        //取消默认操作（在dom0级中）可以使用 return false； 
+        //        if(!txtName.value){
+        //            alert('用户名不能为空');
+        //            return false;//所有浏览器都支持；只能在dom 0 级中使用；
+        //        }
+        //    };
+
+        //提交按钮的事件处理程序
+        if(btnSub.addEventListener){
+            //标准浏览器
+            btnSub.addEventListener('click',btnClickHandler,false);
+        }else{
+            //IE 8及以下浏览器
+            btnSub.attachEvent('onclick',btnClickHandler);
+        };
+        function btnClickHandler(e){
+            //判断是否为空
+            e = e || window.event;
+            if(!txtName.value){
+                alert('用户名不能为空');
+                //处理默认事件；
+                if(e.preventDefault){
+                    //处理标准的浏览器
+                    e.preventDefault();
+                }else{
+                    //处理IE8及以下的浏览器；
+                    e.returnValue = false;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

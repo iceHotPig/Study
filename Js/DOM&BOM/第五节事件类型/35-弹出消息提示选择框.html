@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>弹出消息提示选择框</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            list-style: none;
+        }
+        .search-box-wrap{
+            margin:  0 auto;
+            width: 300px;
+            margin-top: 100px;
+            position: relative;
+        }
+        .list{
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            display: none;
+            position: absolute;
+            width: 100%;
+        }
+        .list li{
+            height: 25px;
+            line-height: 25px;
+            padding-left: 10px;
+        }
+        .list li:hover{
+            background: #eee;
+        }
+        .txt-search{
+            padding-left: 10px;
+            width: 300px;
+            height: 25px;
+            line-height: 25px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="search-box-wrap">
+        <input type="text" id="txtSearch" class="txt-search">
+        <ul class="list">
+            <li>hello1</li>
+            <li>hello2</li>
+            <li>hello3</li>
+            <li>hello4</li>
+            <li>hello5</li>
+        </ul>
+    </div>
+    <script>
+        window.onload = function(){
+            (function(){
+                var txtSearch =document.getElementById('txtSearch');
+                var list = document.querySelector('.list');
+                var li = document.querySelectorAll('.list li');
+                //当获得焦点时，list显示
+                txtSearch.onfocus = function(){
+                    list.style.display = 'block';
+                }
+
+                //当时去焦点时，list消失
+                txtSearch.onblur = function(){
+                    list.style.display = 'none';
+                };
+
+                //给所有的Li上添加点击事件；
+                li.forEach(function(element){
+                    // element.onclick = liClickHandler; //不能实现
+                    element.onmousedown = liClickHandler;
+                    //点击事件和失去焦点事件执行的顺序：
+                    //第一步：先执行onmousedown 事件。事件中让被点击的元素获得焦点;
+                    //那么原来获得焦点的元素会失去焦点；
+                    // mousedown->原来获得焦点元素的blur事件->当前元素的mouseup事件。
+                    //->click 事件;
+                });
+
+                //减少内存消耗
+                function liClickHandler(){
+                    txtSearch.value=this.innerHTML;
+                }
+            })()        
+        }
+    </script>
+</body>
+</html>

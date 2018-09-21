@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .tips{
+            position: absolute;
+            height: 50px;
+            width: 50px;
+            border: #eee;
+            background-color:greenyellow;
+            border-radius: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="tips" id="tips"></div>
+    <div style="height:1000px"></div>
+    <script>
+        (function(){
+            window.onload =function(){
+                var tips = document.getElementById('tips');
+                //给整个文档添加一个onmousemove事件;
+                document.onmousemove = function(e){//e.MouseEvent鼠标事件对象。
+                    var e = e || window.event;
+                    //获取鼠标在整个面的位置 鼠标在整个页面的位置 = 鼠标在视口的位置 + 页面滚动的位置
+                    // e.clientX的兼容性很好;
+                    var tipsX = e.clientX + (document.documentElement.scrollLeft||document.body.scrollLeft);
+                    var tipsY = e.clientY +(document.documentElement.scrollTop||document.body.scrollTop);
+                   
+                   //给固定的元素块设置一个位置
+                    tips.style.left = tipsX-25+'px';
+                    tips.style.top = tipsY-25+'px';
+                }
+            }
+        })()
+    </script>
+</body>
+</html>

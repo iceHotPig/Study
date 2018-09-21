@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>节点操作案例</title>
+    <script src="../js/documentReady.js"></script>
+    <script src="../js/EventUtil.js"></script>
+</head>
+<body>
+    <ul id="menu"></ul>
+    <script>
+        (function(){
+            var data =[
+                    {name : "首页",url:"/index.html",id:1},
+                    {name : "关于",url:"/about.html",id:2},
+                    {name : "产品",url:"/products.html",id:3},
+                    {name : "案例",url:"/example.html",id:4},
+                    {name : "联系",url:"/contact.html",id:5}
+                ];
+                //页面加在完成后动态添加li标签数据
+            document.myReady(function(){
+                loadMenu();
+            });
+            function loadMenu(){
+                // 动态创建li标签
+                var menu = document.getElementById('menu');
+                for(var i = 0; i<data.length; i++){
+                    var liElement = document.createElement('li');
+                    //给li设置设置属性；
+                    // liElement.setAttribute('id','menu'+data[i].id);//推荐使用;
+                    //创建id节点
+                    var liIdAttrNode = document.createAttribute('id');
+                    //给属性节点设置属性值 不推荐使用
+                    liIdAttrNode.nodeValue = 'menu'+data[i].id;
+                    //把属性值和标签联系起来；
+                    liElement.setAttributeNode(liIdAttrNode);
+                    //动态创建a标签
+                    var aElement = document.createElement('a');
+                    //给a变迁天机属性标签
+                    var aHrefAttrNode = document.createAttribute('href');
+                    //给a的href属性添加属性值；
+                    aHrefAttrNode.nodeValue = data[i].url;
+                    //给abq设置属性值
+                    aElement.setAttributeNode(aHrefAttrNode);
+                    //给a标签添加内容
+                    // 兼容处理
+                    if(aElement.textContent){
+                        aElement.textContent = data[i].name;//标准浏览器 和ie9+;
+                    }else{
+                        aElement.innerText = data[i].name;//ie早期版本；
+                    }
+                    // aElement.innerHTML = data[i].name;//这个兼容性最好所有浏览器
+                    //把a标签添加到li标签里面去
+                    liElement.appendChild(aElement);
+                    //吧li标签添加到ul标签里；
+                    menu.appendChild(liElement);
+                }  
+            }
+        })()
+    </script>
+</body>
+</html>

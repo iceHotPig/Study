@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <p>1ddd</p>
+    <p>2ddd</p>
+    <p>3ddd</p>
+    <h1>老马</h1>
+    <div class="tem">你好</div>
+       
+    <script>
+        //把页面中的所有的p标签获取出来
+        var elemPs = document.getElementsByTagName('p');
+        //此方法返回的是：HTMLCollection集合对象，是一个伪数组
+        console.dir(elemPs );
+        
+        // 要求把所有的标签的内容打印出来
+        for(var i = 0;i < elemPs.length;i++){
+            console.log(elemPs [i].innerHTML);
+        }
+    </script>
+</body>
+</html>

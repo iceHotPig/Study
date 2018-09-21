@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>跑马灯案例</title>
+</head> 
+<body>
+    <script>
+        //让title的最后一个文字放到titile的最前面。
+        //使用字符数组的方法；
+        //数组有：
+                // pop方法可以从数组的最后一个位置弹出一个元素；
+                //unshift方法可以在数组的头部添加一个元素
+
+        setInterval(function(){
+            // 获取文档的标题
+            var charTitle = document.title;
+            // 让标题字符串转化成数组
+            var charArray = charTitle.split("");
+            //让数组的最后一个元素去除
+            var lastChart = charArray.pop();
+            //让最后一个元素放到数组的前面
+            charArray.unshift(lastChart);
+            //让数字转化成字符串
+            var  newTitle = charArray.join("");
+            document.title = newTitle;//把新的title添加到浏览器上
+        },800)
+    </script>
+</body>
+</html>

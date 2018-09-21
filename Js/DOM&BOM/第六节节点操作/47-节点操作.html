@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../js/documentReady.js"></script>
+    <script src="../js/EventUtil.js"></script>
+</head>
+<body>
+    <ul id="list">
+        <li>woshiidjo1</li>
+        <li>woshiidjo2</li>
+        <li id="li3">woshiidjo3</li>
+        <li>woshiidjo4</li>
+        <li>woshiidjo5</li>
+    </ul>
+    <script>
+        (function(){
+            document.myReady(function(){
+                var list = document.getElementById('list');
+                var oLi3 = document.getElementById('li3');
+                console.log(oLi3.previousSibling);
+                console.log(oLi3.parentNode);
+                console.log(oLi3.nextSibling);
+                console.log(list.firstChild);
+                console.log(list.childNodes);
+                console.log(list.lastChild);
+            });
+        })()    
+    </script>
+</body>
+</html>

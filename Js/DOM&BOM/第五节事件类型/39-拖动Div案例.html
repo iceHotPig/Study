@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>拖动Div案例</title>
+    <style>
+        html,body,div{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color:mistyrose;
+        }
+        .box{
+            position:absolute;
+            height: 100px;
+            width: 100px;
+            border: 1px solid salmon;
+            background-color:purple;
+            cursor:move;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" id="box" style="top:10px;left:10px;"></div>
+    <script>
+        (function(){
+            //监听div的mousedown事件。开始计算鼠标移动的位移，
+            //通过鼠标水平方向位移设置div的left值，通过水杯垂直方向设置div 的top值；
+            //div的mouseup触发时，div移动结束
+            window.onload = function(){
+                var box =document.getElementById('box');
+                //当mousedown的时候设置标志位true开始移动 ； mouseup设置标志位位false；mousemove时记录当前和位置和前一个位置，计算其移动的距离；
+                var tempX = 0,tempY = 0;
+                var isMove = false; 
+                //鼠标按下开始移动div
+                box.onmousedown = function(e){
+                    var e = e ||window.event;
+                    isMove = true;
+                    tempX = e.clientX +(document.documentElement.scrollLeft||document.body.scrollLeft);
+                    tempY = e.clientY +(document.documentElement.scrollTop||document.body.scrollTop);
+                };
+                //鼠标抬起停止移动div
+                box.onmouseup = function(e){
+                    isMove = false;
+                }
+                //mousemove 时开始移动div
+
+                document.onmousemove = function(e){
+                    //判断是否是鼠标按下去时
+                    if(!isMove){
+                        return;
+                    }
+                    //计算出当前鼠标的位置
+                    //screenX screenY 和clientX clientY,都是有滚动问题;
+                    //pageX和pageY不管是否滚动都不会影响;
+                    var e = e ||window.event;
+                    // 鼠标相对于页面的位置
+                    var pageX = e.clientX +(document.documentElement.scrollLeft||document.body.scrollLeft);
+                    var pageY = e.clientY +(document.documentElement.scrollTop||document.body.scrollTop);
+                    //移动距离的计算
+                    moveX = pageX - tempX;
+                    moveY = pageY - tempY; 
+                    //要把div在x方向上移动moveX，在y上移动moveY；
+                    //设置div的style.left style.top;
+                    //一开始没有通过style.top和style.left来设置style属性，那么气值都是“”;
+                    //js是拿不到css里面设置的left和top的值;
+                    //js只能通过控制style属性，并且 可以读取style属性里面的left和top的值;
+                    box.style.left = (parseFloat(box.style.left)+moveX)+"px";
+                    box.style.top = (parseFloat(box.style.top)+moveY)+"px";
+                    //为鼠标笑一次movemove做初始化鼠标坐标位置;
+                    tempX = pageX;
+                    tempY = pageY;
+                }
+            }
+        })()
+    </script>
+</body>
+</html>

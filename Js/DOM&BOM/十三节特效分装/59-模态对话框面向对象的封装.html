@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模态对话框</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/minireset.css/0.0.2/minireset.css">
+    <style>
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    .dialog-wrap{
+        display: none;
+    }
+    .dialog{
+        position: absolute;
+        top: 50%;
+        left:50%;
+        margin-left: -151px;
+        margin-top: -151px;
+        border: 1px solid #ccc;
+        width: 300px;
+        z-index: 1000;
+    }
+    .dialog .dialog-header{
+        position: relative;
+        height: 30px;
+        border-bottom: 1px solid #ccc;
+    }
+    .dialog .dialog-header .btn-close{
+        position: absolute;
+        top:5px;
+        right: 10px;
+        cursor: pointer;
+    }
+    .dialog .dialog-body{
+        height: 269px;
+    }
+    .dialog-cover{
+        position: absolute;
+        top:0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background:rgba(23, 87, 45, .7);
+        z-index: 100;
+    }
+    </style>
+</head>
+<body>
+    <input type="button" value="弹出对话框"" id="btn">
+
+    <!-- 规定：用户要使用dialog对话框必须： -->
+    <!-- 1: div的class="dialog-wrap"; -->
+    <!-- 2: 必须要有title 属性 -->
+    <!-- 3：div中innerHTMl就是显示在对话框上的信息 -->
+    <div class="dialog-wrap" id="dialogWrap" title="弹出来的对话框">
+        在对话框里面显示的内容
+        <p>你是好样的</p>
+        <input type="button" value = "关闭">
+    </div>
+    <H1>12213</H1>
+<script src="../js/Rui.js"></script>
+<script>
+    (function(){
+        window.onload = function(){
+            var btn = document.getElementById('btn');
+            btn.onclick = function(){
+            //  在#dialogWrap上创建一个对话框；
+             var dialog =new Rui.dialog('#dialogWrap');
+                // var dialog = Rui.dialog('#dialogWrap');//如果用户没有用new也不会报错；
+                //需要兼容对个组件，Rui.js
+                dialog.show();//弹出对话框；
+            }
+        }
+    })()
+</script>
+</body>
+</html>

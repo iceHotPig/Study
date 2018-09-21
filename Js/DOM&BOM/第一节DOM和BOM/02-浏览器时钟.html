@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>浏览器时钟</title>
+</head>
+<body>
+    <script>
+        // window.setInterval()
+        //需要传两个参数
+        //第一个参数 （可以是一个函数，也可以是一段代码字符串）
+        //第二个参数是间隔时间
+        var intervalID= setInterval(function(){
+            // console.log('hello World');
+            console.log(new Date())
+        },1000)
+        // setInterval有一个返回值intervalID
+        //setInterval("console.log(new Date())",1000)// 不推荐使用代码字符串的方式
+
+        //setTimeout(func,delay) 
+        //延迟执行函数，只执行一次
+        setTimeout(function(){
+            console.log("是不是123");
+            //停止时钟
+            console.log(intervalID);//时钟的编号
+            clearInterval(intervalID);
+        },4000)
+    </script>
+</body>
+</html>

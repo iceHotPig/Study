@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表格的全选和全不选案例</title>
+    <style>
+        table{
+            border-collapse: collapse;
+        }
+        
+    </style>
+</head>
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>
+                    <input type="checkbox" id ='ckAll' name ='ckAll'>
+                </th>
+                <th>用户名</th>
+                <th>性别</th>
+                <th>级别</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <input type="checkbox">
+                </td>
+                <td>aaa</td>
+                <td>男</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox">
+                </td>
+                <td>bbb</td>
+                <td>男</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox">
+                </td>
+                <td>ccc</td>
+                <td>男</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox">
+                </td>
+                <td>ddd</td>
+                <td>男</td>
+                <td>4</td>
+            </tr>
+        </tbody>
+    </table>
+<script src="../js/documentReady.js"></script>
+<script src="../js/EventUtil.js"></script>
+<script>
+    (function(){
+        document.myReady(function(){
+            var ckAll = document.getElementById('ckAll');
+            EventUtil.addEvent(ckAll,'click',function(){
+                var inputArr = document.querySelectorAll('tr td input');
+                for(var i = 0;i<inputArr.length;i++){
+                    inputArr[i].checked = this.checked;
+                }
+            });``
+        });
+    })()
+</script>
+</body>
+</html>

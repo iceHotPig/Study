@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>段落多选和互斥单选案例</title>
+    <style>
+        html,body,div,p{
+            padding: 0;
+            margin: 0;
+        }
+        p{
+            cursor: pointer;
+            padding: 3px;
+        }
+        .p-box{
+           padding: 10px 20px; 
+        }
+        .p-bg-gray{
+            background-color: #eee;
+        }
+        .p-bg-white{
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="p-box" id="pBox">
+        <p>我是其中的段落1</p>
+        <p>我是其中的段落2</p>
+        <p>我是其中的段落3</p>
+        <p>我是其中的段落4</p>
+        <p>我是其中的段落5</p>
+        <p>我是其中的段落6</p>
+        <p>我是其中的段落7</p>
+        <p>我是其中的段落8</p>
+        <p>我是其中的段落9</p>
+    </div>
+<script>
+    (function(){
+        window.onload = function(){
+            //拿到所有的p标签
+            var pBox = document.getElementById('pBox');
+            var p=pBox.getElementsByTagName('p');
+
+            for(var i=0;i<p.length;i++){
+                p[i].onclick = pClickHandler
+            }
+            
+            //算罗标签点击的事件处理程序
+            function pClickHandler(e){
+                var e = e||window.event;
+                //判断是否按下ctrl键；
+                if(e.ctrlKey){
+                    //多选
+                    console.log('多选');
+                    this.className = 'p-bg-gray';
+                }else{
+                    // 单选
+                    console.log('单选');
+                    //首先所有的p标签都去背景颜色；
+                    for(var i=0;i<p.length;i++){
+                        p[i].className = 'p-bg-white';
+                    }
+                    //给自己添加背景颜色；  
+                    this.className = 'p-bg-gray'; 
+                }
+
+            }
+        }
+    })()
+</script>
+</body>
+</html>

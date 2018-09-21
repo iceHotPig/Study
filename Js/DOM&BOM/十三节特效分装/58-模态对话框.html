@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模态对话框</title>
+    <style>
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    .dialog-wrap{
+        display: none;
+    }
+    .dialog{
+        position: absolute;
+        top: 50%;
+        left:50%;
+        margin-left: -151px;
+        margin-top: -151px;
+        border: 1px solid #ccc;
+        width: 300px;
+        z-index: 1000;
+    }
+    .dialog .dialog-header{
+        position: relative;
+        height: 30px;
+        border-bottom: 1px solid #ccc;
+    }
+    .dialog .dialog-header .btn-close{
+        position: absolute;
+        top:5px;
+        right: 10px;
+        cursor: pointer;
+    }
+    .dialog .dialog-body{
+        height: 269px;
+    }
+    .dialog-cover{
+        position: absolute;
+        top:0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background:rgba(23, 87, 45, .7);
+        z-index: 100;
+    }
+    </style>
+</head>
+<body>
+    <input type="button" value="弹出对话框"" id="btn">
+    <div class="dialog-wrap" id="dialogWrap">
+        <div class="dialog-cover"></div>
+        <div class="dialog" id="dialog">
+            <div class="dialog-header">
+                <h3>对会话框头部</h3>
+                <span class="btn-close" id="closeBtn">X</span>
+            </div>
+            <div class="dialog-body">
+                对话框内部
+            </div>
+        </div>
+    </div>
+    <H1>12213</H1>
+     <script>
+         (function(){
+             window.onload = function(){
+                 var btn = document.getElementById('btn');
+                 btn.onclick = function(){
+                     var dialogWrap = document.getElementById('dialogWrap');
+                     dialogWrap.style.display = "block";
+                 }
+                 var closeBtn = document.getElementById('closeBtn');
+                 closeBtn.onclick = function(){
+                     this.parentNode.parentNode.parentNode.style.display = 'none';
+                 }
+             }
+         })()
+     </script>
+</body>
+</html>

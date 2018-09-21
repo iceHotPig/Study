@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>32-页面滚动固定定位案例.html</title>
+    <script src="js/documentReady.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+    .header{
+        text-align: center
+    }
+    .header-tips{
+        height: 100px;
+        background: #8877ee;
+    }
+    .header-seacher{
+        height: 100px;
+        background: #6633ff;
+        line-height: 100px;
+        width: 100%;
+    }
+    .cnt{
+        height: 1000px;
+        background:red;
+    }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-tips">这里是头部tips</div>
+        <div class="header-seacher">
+            <input type="text">
+            <input type="button" value="搜索">
+        </div>
+    </div>
+    <div class="cnt">
+        这里是内容
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+            <li>10</li>
+            <li>11</li>
+            <li>12</li>
+            <li>13</li>
+            <li>14</li>
+            <li>15</li>
+            <li>16</li>
+            <li>17</li>
+            <li>18</li>
+            <li>19</li>
+            <li>20</li>
+            <li>21</li>
+            <li>22</li>
+            <li>23</li>
+            <li>24</li>
+            <li>25</li>
+            <li>26</li>
+            <li>27</li>
+            <li>28</li>
+            <li>29</li>
+            <li>30</li>
+            <li>31</li>
+            <li>32</li>
+            <li>33</li>
+            <li>34</li>
+            <li>35</li>
+            <li>36</li>
+            <li>37</li>
+            <li>38</li>
+            <li>39</li>
+            <li>40</li>
+        </ul>
+    </div>
+    <script>
+    document.myReady(function(){
+        window.onscroll = function(){
+            var scrollH = document.documentElement.scrollTop ||document.body.scrollTop;
+            var headerSeacher = document.querySelector('.header-seacher');
+            var cnt = document.querySelector('.cnt');
+            if(scrollH > 100){
+                headerSeacher.style.position = 'fixed';
+                headerSeacher.style.top = 0;
+                cnt.style.marginTop = 100 +"px";
+            }else{
+                headerSeacher.style.position = 'static';
+                headerSeacher.style.top = 0;
+                cnt.style.marginTop = 0;
+            }
+        }
+    });    
+    </script>
+</body>
+</html>

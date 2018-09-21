@@ -1,0 +1,219 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <title>许愿墙</title>
+     <style>
+         *{
+             margin: 0;
+             padding: 0;
+         }
+         .wall{
+             width: 100%;
+             height: 100vh;
+             background: url('../img/2.jpg') no-repeat skyblue;
+             background-size: cover;
+             overflow: hidden;
+         }
+         .wish-bg{
+             margin: 0 auto;
+             height: 600px;
+             width: 1000px;
+             background-color:seashell;
+             position: relative;
+         }
+         h1{
+             padding: 30px;
+             text-align: center;
+             color: brown;
+             letter-spacing: 5px;
+         }
+         .card{
+             position:absolute;
+             height: 240px;
+             width: 180px;
+             background: url('../img/1.jpg') no-repeat skyblue;
+             background-size: cover;
+             font-size: 10px;
+             text-align: center;
+             cursor:move;
+             border: 1px salmon solid;
+             /* z-index: 1; */
+         }
+         .card-header{
+            height: 60px;  
+            line-height: 60px;
+            font-size: 10px;
+         }  
+         .card-header .icon{
+            position:relative;
+            cursor: pointer;
+            font-size: 14px;
+            top:-10px;
+         }
+         .card-cnt{
+             height: 120px;
+             padding: 20px;
+             box-sizing: border-box;
+             text-align: left;
+             text-indent: 20px;
+         }
+         .card-footer{
+             height: 30px;
+             line-height: 60px;
+         }
+     </style>
+ </head>
+ <body>
+     <div class="wall">
+         <h1>许愿墙</h1>
+         <div class="wish-bg" id = "wishBg">
+         </div>
+     </div>
+     <script src="../js/documentReady.js"></script>
+     <script src="../js/EventUtil.js"></script>
+     <script>
+        (function(){
+            var data = [
+                 {
+                     "id":1,
+                     "name":"小明",
+                     "cnt":"面向大海。春暖花开",
+                     "time":"2018-01-23 12:01:12",
+                 },
+                 {
+                     "id":2,
+                     "name":"小红",
+                     "cnt":"墙角数枝梅，凌寒独自开",
+                     "time":"2018-01-23 12:01:12",
+                 },
+                 {
+                     "id":3,
+                     "name":"小明",
+                     "cnt":"清明时节雨纷纷，路上行人欲断魂",
+                     "time":"2018-01-23 12:01:12",
+                 },
+                 {
+                     "id":4,
+                     "name":"小明",
+                     "cnt":"月儿弯弯照九州，几家欢乐几家愁",
+                     "time":"2018-01-23 12:01:12",
+                 },
+                 {
+                     "id":5,
+                     "name":"小明",
+                     "cnt":"明月几时有，把酒问青天",
+                     "time":"2018-01-23 12:01:12",
+                 },
+                 {
+                     "id":6,
+                     "name":"小明",
+                     "cnt":"葡萄美酒夜光杯，欲饮琵琶马上催",
+                     "time":"2018-01-23 12:01:12",
+                 },
+                 {
+                     "id":7,
+                     "name":"小明",
+                     "cnt":"出淤泥而不染，濯清涟而不妖",
+                     "time":"2018-01-23 12:01:12",
+                 },
+                 {
+                     "id":8,
+                     "name":"小明",
+                     "cnt":"秋水共长天一色，落霞与孤鹜齐飞",
+                     "time":"2018-01-23 12:01:12",
+                 },
+             ]
+             var maxZIndex = 1,//card 最大的zindex值
+                  cardsArr = [],//放所有的card标签；
+                    isMove = false,//移动的标识符；是否移动；
+                     tempX = 0,//开始的位置；
+                     tempY = 0,
+                  moveNode = null;
+            document.myReady(function(){
+                // 遍历数据 初始化数据
+                loadCardDiv();
+                //给所有的card添加一个mousedown 事件；
+                for(var m = 0;m<cardsArr.length;m++){
+                    cardsArr[m].onmousedown = function(e){
+                        maxZIndex +=1;
+                        console.log(this)
+                        this.style.zIndex = maxZIndex;
+                        //记录鼠标的位置；
+                        isMove = true;
+                         e = e || window.event;
+                        tempX = e.clientX + (document.documentElement.scrollLeft||document.body.scrollLeft);
+                        tempY = e.clientY + (document.documentElement.scrollTop||document.body.scrollTop);
+                        moveNode = this;
+                    };
+                    cardsArr[m].onmousemove = function(e){
+                        e = e || window.event;
+                        pageX = e.clientX + (document.documentElement.scrollLeft||document.body.scrollLeft);
+                        pageY = e.clientY + (document.documentElement.scrollTop||document.body.scrollTop);
+                        var moveX =pageX-tempX;
+                        var moveY =pageY-tempY;
+                        if(isMove&&this==moveNode){
+                            this.style.left = parseInt(this.style.left) + moveX + "px";
+                            this.style.top =  parseInt(this.style.top) + moveY + "px";
+                        }
+                        tempX = pageX;
+                        tempY = pageY;
+                    };
+                    cardsArr[m].onmouseup = function(){
+                        isMove = false;
+                    };
+                }
+                //实现移动；
+                //关闭card；
+                var closeBtns = document.getElementsByClassName('icon');
+                for(var n = 0;n<closeBtns.length;n++){
+                    closeBtns[n].onclick = function(){
+                        this.parentNode.parentNode.style.display = 'none';
+                    }
+                }
+            });//myReady
+            function loadCardDiv(){
+                //创建一个空的数组、
+                var strHTMLArr = [];
+                //遍历数据，拿到每一个许愿的数据;
+                for(var i=0;i<data.length;i++){
+                    var itemData = data[i];
+                    var str = '';
+                        str += '<div class="card">';
+                        str +=     '<h6 class="card-header">';
+                        str +=         '<span>455'+data[i].id+'条'+data[i].time+'</span>';
+                        str +=         '<span class="icon">X</span>';
+                        str +=     '</h6>';
+                        str +=      '<div class="card-cnt">'+data[i].cnt+'</div>';
+                        str +=      '<div class="card-footer">'+data[i].name+'</div>';
+                        str += '</div>'
+                        strHTMLArr.push(str);
+                }
+                //这里不能兼容ie8；
+                // var wishBg = document.querySelector('.wish-bg');
+                // wishBg.innerHTML = strHTMLArr.join("");
+                // var cards = wishBg.getElementsByClassName('card');
+                // //遍历wishBg里面所有的card节点，设置一个随机的left和top值；
+                // for(var j = 0;j< cards.length; j++){
+                //     cards[j].style.top = Math.random()*(600-240)+"px";
+                //     cards[j].style.left = Math.random()*(1000-190)+"px";
+                // }   
+            //兼容ie8；
+                var wishBg = document.getElementById('wishBg');
+                wishBg.innerHTML = strHTMLArr.join("");
+                //遍历wishBg里面所有的card节点，设置一个随机的left和top值；
+                // console.log(wishBg.childNodes);
+                for(var j=0;j<wishBg.childNodes.length;j++){
+                    // console.log(wishBg.childNodes[j]);
+                    if(wishBg.childNodes[j].nodeType == 1){
+                        wishBg.childNodes[j].style.top = Math.random()*(600-240)+"px";
+                        wishBg.childNodes[j].style.left = Math.random()*(1000-190)+"px";
+                        cardsArr.push(wishBg.childNodes[j]);
+                    }
+                }
+                // console.log(cardsArr);
+            }
+        })();
+     </script>
+ </body>
+ </html> 

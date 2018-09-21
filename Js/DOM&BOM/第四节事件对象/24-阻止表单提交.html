@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>阻止表单提交</title>
+</head>
+<body>
+   <form action="#">
+       用户名：<input type="text" name="text" id="txtname">
+       <input type="submit" value="点击" id="btnSub" >
+   </form> 
+   <script>
+       var btnSub = document.getElementById('btnSub');
+        btnSub.onclick = function(e){
+            e = e || window.event
+            if(e.preventDefault){
+                e.preventDefault();
+            }else{
+                e.returnValue = false;
+            }
+            return false;
+       }
+   </script>
+</body>
+</html>

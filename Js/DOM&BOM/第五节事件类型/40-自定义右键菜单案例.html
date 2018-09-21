@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义右键案例</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .tip-box{
+            list-style: none;
+        }
+        .tip-box{
+            display: none;
+            position: absolute;
+            border: 1px saddlebrown solid;
+        }
+        .tip-box li{
+            border: 1px rebeccapurple solid;
+            padding: 0 20px;
+        }
+        .tip-box li:hover{
+            background-color: lemonchiffon ;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="t">右键点击</h1>
+    <ul class="tip-box" id="tipBox">
+        <li>hello ssss</li>
+        <li>hello aaaa</li>
+        <li>hello llll</li>
+    </ul>
+    <script>
+        (function(){
+            window.onload = function(){
+                var  t = document.getElementById('t');
+                var tipBox = document.getElementById('tipBox');
+                t.onmousedown = function(e){
+                    var e = e||window.event;
+                    if(e.button == 2||e.button ==6){
+                        console.log('右键点击了');
+                        //弹出自定义的菜单
+                        tipBox.style.display = 'block';
+                        //弹出菜单的位置
+                        var pageX = e.clientX +(document.documentElement.scrollLeft||document.body.scrollLeft);
+                        var pageY = e.clientY +(document.documentElement.scrollTop||document.body.scrollTop);
+                        tipBox.style.left = pageX +"px"
+                        tipBox.style.top = pageY +"px"
+                    }
+                }
+                //点击文档就关闭菜单
+                document.onclick = function(e){
+                    tipBox.style.display = 'none';
+                }
+                document.oncontextmenu = function(e){
+                    //阻止默认行为就阻止浏览器弹出右键菜单;
+                    var e = e||window.event;
+                    if(e.preventDefault){
+                        e.preventDefault();
+                    } else{
+                        e.returnValue = false;
+                    }
+                    return false;
+                }
+            }
+        })()
+    </script>
+</body>
+</html>

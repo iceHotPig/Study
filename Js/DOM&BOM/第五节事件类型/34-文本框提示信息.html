@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文本框提示信息</title>
+</head>
+<body>
+    <input type="text" placeholder="老马">
+    <input type="text" value="老马" id="txt2">
+    <!--   
+        placeholder在早期的IE8 及其以上的浏览器是不支持的
+        用以下代码完成placeholder的方法
+     -->
+    <script>
+        window.onload = function(){
+            var txt2 = document.getElementById('txt2');
+            txt2.style.color = '#ccc'
+            txt2.onfocus = function(){
+                if(txt2.value == '老马'){
+                    txt2.value ='';
+                    txt2.style.color = '#424242'
+                }
+            };
+            txt2.onblur = function(){
+                if(txt2.value == ''){
+                    txt2.value ='老马';
+                    txt2.style.color = '#ccc'
+                }
+            }
+        }    
+    </script>
+</body>
+</html>

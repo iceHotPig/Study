@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件对象的兼容处理</title>
+</head>
+<body>
+    <input type="button" value="点击" id="btn">
+<script>
+    var btn = document.getElementById('btn');
+    btn.onclick = function(e){
+        //在标准的浏览器中，e就是事件对象。
+        //在IE浏览器中是通过 window.event属性获取当前的事件对象。
+        e = e ? e : window.event;
+        console.dir(e);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../js/documentReady.js"></script>
+    <script src="../js/EventUtil.js"></script>
+</head>
+<body>
+    <select name="sel" id="sel"></select>
+    <script>
+        (function(){
+            var data = [
+                {name:'北京',val:1},
+                {name:'上海',val:2},
+                {name:'广州',val:3},
+                {name:'深圳',val:4}
+            ];
+            document.myReady(function(){
+                //初始化下拉菜单数据;
+                initSle(data);
+                //给下拉列表绑定change事件；
+                var sel = document.getElementById('sel');
+                EventUtil.addEvent(sel,'change',function(){
+                    //拿到选中的value值和text；
+                    var selOpt = this.options[this.selectedIndex];
+                    console.log(selOpt.value);
+                    console.log(selOpt.text);
+
+                    // 如果只要vaule值则可以直接用select标签属性的value
+                    console.log(this.value);
+                });
+            });
+            function initSle(data){
+                var sel = document.getElementById('sel');
+                for(var i=0;i<data.length;i++){
+                    var opt = document.createElement('option');
+                    //标准浏览器和ie8+
+                    // opt.value = data[i].val;
+                    // opt.text = data[i].name;
+                    // sel.add(opt,null);
+                    
+                    // 兼容所有的浏览器
+                    opt.setAttribute('value',data[i].val);
+                    if(opt.textContent){
+                        opt.textContent = data[i].name;
+                    }else{
+                        opt.innerText =data[i].name;  
+                    }
+                    sel.appendChild(opt);
+                }
+            }
+        })()
+    </script>
+    
+</body>
+</html>

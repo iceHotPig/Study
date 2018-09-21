@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>阻止事件冒泡处理</title>
+    <style>
+        div{
+            border: 1px solid #ccc;
+        }
+        .parent{
+            height: 200px;
+            width: 200px;
+            background: #87c;
+            padding: 30px;
+        }
+        .child{
+            height: 100px;
+            width: 100px;
+            background-color: #4d4d4d;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        我是父元素
+        <div class="child">
+            我是子元素
+        </div>
+    </div>
+    <script>
+        var parent = document.querySelector('.parent'),
+             child = document.querySelector('.child');
+
+        child.addEventListener('click',function(e){
+            alert('子元素执行了');
+           // 阻止子元素的事件冒泡
+            e = e || window.event;
+            if(e.stopPropagation){
+                e.stopPropagation();//在标准浏览器下
+            }else{
+                e.cancelBubble = true;//IE8及以下 浏览器下
+            }
+        },false)
+        parent.addEventListener('click',function(e){
+            alert('父元素执行了');
+        },false)
+    </script>
+</body>

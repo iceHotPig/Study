@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../js/documentReady.js"></script>
+    <script src="../js/EventUtil.js"></script>
+</head>
+<body>
+    <button id="btn">点击</button>
+    <script>
+        (function(){
+            document.myReady(function(){
+                //拿到按钮；
+                var btn = document.getElementById('btn');
+                EventUtil.addEvent(btn,'click',function(e){
+                    console.log(e);
+                    console.log(this==btn);
+                },false)
+            })//end for myReady
+        })()
+    </script>
+</body>
+</html>

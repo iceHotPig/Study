@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>键盘事件</title>
+    <script src="../js/documentReady.js"></script>
+</head>
+<body>
+    <input type="text" id="txt">
+    <script>
+        (function(){
+            document.myReady(function(){
+                //可以绑定事件；
+                var txt = document.getElementById('txt');
+                //键盘上的键只要被按下就会触发keydown事件应用于所有的Dom对象；可以监听功能键；
+                //可以按着一直不放开会一直触发；
+
+                txt.onkeydown = function(e){
+                    var e = e || window.event;
+                    console.log("keydown==>keyCode:"+e.keyCode+"charCode:"+e.charCode);
+                }
+                //可以一直触发。只能监听可以打印字符的键。退格键就不行；
+                //keypress事件区分按下的大写小写字符；
+                txt.onkeypress = function(e){
+                    var e = e || window.event;
+                    console.log("keypress==>keyCode:"+e.keyCode+"charCode:"+e.charCode);
+                }
+                //只能触发一次，不区分大小写，按下的疑虑按大写的阿斯克码值计算；
+                txt.onkeyup = function(e){
+                    var e = e || window.event;
+                    console.log("keyup==>keyCode:"+e.keyCode+"charCode:"+e.charCode);
+                }
+            })
+        })()
+    </script>
+</body>
+</html>

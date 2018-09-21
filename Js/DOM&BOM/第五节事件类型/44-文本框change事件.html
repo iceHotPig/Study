@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>文本框change事件</title>
+    <script src="../js/documentReady.js"></script>
+</head>
+
+<body>
+    用户名<input type="text" id="userName">
+    <input type="button" id="subBtn" value="uuuu">
+    <script>
+        (function () {
+            document.myReady(function () {
+                var userName = document.getElementById('userName');
+                 //失去焦点才能触发；
+                userName.onchange = function(){
+                    //判断文本框的长度
+                    //文本框继续获得标点；
+                    if(this.value.length>9||this.value.length<3){
+                        alert('用户名必须是3到9个字符')
+                    }
+                }//end for onchange
+                //不需要失去焦点就能触发
+                // userName.oninput = function(){
+                //     //判断文本框的长度
+                //     //文本框继续获得标点；
+                //     if(true){
+                //         alert('用户名必须是3到9个字符')
+                //     }
+                // }//end for oninput
+            });//end for myReady
+        })()
+    </script>
+</body>
+
+</html>

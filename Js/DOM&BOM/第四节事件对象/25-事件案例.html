@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件案例</title>
+</head>
+<body>
+    <input type="text" id="txt">
+    <script>
+        var txt = document.getElementById('txt');
+        //onkeypress 事件，当键盘上键被按下的时候会触发，
+        txt.onkeypress = function(e){
+            e = e || window.event;
+            //事件对象中的keyCode属性就是你所按下的键盘上的编码
+            // console.log(e.keyCode)
+            //0=>48, 9=>57
+            if(e.keyCode<48 || e.keyCode>57){
+                console.log(e.keyCode);
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>

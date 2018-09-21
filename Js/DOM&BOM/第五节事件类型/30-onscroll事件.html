@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>onscroll 事件</title>
+</head>
+<body>
+    <div style="height:1000px;"></div>
+    <script>
+        //scroll 事件会进行重复触发
+        window.onscroll = function(e){
+            console.log("scroll");
+            //标准浏览器pageYOffset和pageXOffset IE不支持
+            // console.log(window.pageYOffset);
+            // console.log(window.pageXOffset);
+            //IE 支持document.documentElement.scrollTop 标准的支持document.body.scrollTo
+            console.log(document.documentElement.scrollTop);//IE支持的
+            console.log(document.body.scrollTop);//标准浏览器支持
+            // console.log(document.documentElement.scrollTop||document.body.scrollTop);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tab页签案例</title>
+    <style>
+        html,body,div,ul,li,{
+            padding: 0;
+            margin: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        .tab{
+            padding: 200px;
+        }
+        .tab .tab-header{
+            font-size: 0;
+            height: 30px;
+            width: 500px;
+            padding: 0;
+        }
+        .tab .tab-header .tab-header-item{
+            padding: 5px 40px;
+            font-size: 14px;
+            display: inline-block;
+            border: 1px #ccc solid;
+            background-color:#eee;
+        }
+        .tab .tab-header .active{
+            background-color:#fff;
+            border-bottom:1px solid #fff ;
+        }
+        .tab .tab-body{
+            width: 600px;
+            border: 1px #ccc solid;
+        }
+        .tab .tab-body .tab-body-item{
+            height: 400px;
+            display: none;
+            padding: 10px;
+        }
+        .tab .tab-body .active{
+            display: block;
+        } 
+    </style>
+</head>
+<body>
+    <div class="tab">
+        <ul class="tab-header" id="tabHeader">
+            <li tabId='1' class="tab-header-item active">新闻</li>
+            <li tabId='2' class="tab-header-item">关于</li>
+            <li tabId='3' class="tab-header-item">电影</li>
+            <li tabId='4' class="tab-header-item">音乐</li>
+        </ul>
+        <div class="tab-body" id="tabBody">
+            <div itemid="1" class="tab-body-item active">页签内容1</div>
+            <div itemid="2" class="tab-body-item">页签内容2</div>
+            <div itemid="3" class="tab-body-item">页签内容3</div>
+            <div itemid="4" class="tab-body-item">页签内容4</div>
+        </div>
+    </div>
+    <script>
+        (function(){
+            window.onload = function(){
+                var tabHeader = document.getElementById('tabHeader');
+                var tabHeaderLists = tabHeader.getElementsByTagName('li');
+                for(var i=0;i<tabHeaderLists.length;i++){
+                    tabHeaderLists[i].onclick = function(){
+                       var tabId = this.getAttribute('tabId');
+                        for(var j = 0;j<tabHeaderLists.length;j++){
+                            tabHeaderLists[j].className = 'tab-header-item';
+                        }
+                        this.className = 'tab-header-item active'; 
+                        var tabBody = document.getElementById('tabBody');
+                        var tabBodyItems = tabBody.getElementsByClassName('tab-body-item');
+                        for(var m = 0; m<tabBodyItems.length;m++){
+                            var itemid = tabBodyItems[m].getAttribute('itemid');
+                            if(tabId == itemid){
+                                tabBodyItems[m].className = 'tab-body-item active';
+                            }else{
+                                tabBodyItems[m].className = 'tab-body-item';
+                            }
+                        }   
+                    }
+                }   
+            }
+        })()
+    </script>
+</body>
+</html>

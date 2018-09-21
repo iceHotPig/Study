@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>aynshi </title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/minireset.css/0.0.2/minireset.css">
+    <style>
+        .wrap{
+            height: 500px;
+            width: 400px;
+            margin: 200px auto;
+            padding: 20px;
+        }
+        .box{
+            height: 300px;
+            width: 300px;
+            border: 1px saddlebrown solid;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <input type="button" value="折叠" id="btnSliderUP">
+        <input type="button" value="展开" id="btnSliderDown">
+        <div class="box" id="box">
+            我是box
+        </div>
+    </div>
+<script src="../js/Rui.js"></script>
+<script>
+    (function(){
+        window.onload = function(){
+            var btnSliderDown = document.getElementById('btnSliderDown');
+            var btnSliderUP = document.getElementById('btnSliderUP');
+            var box = document.getElementById('box');
+            btnSliderUP.onclick = function(){
+                Rui.slideUp(box,600);
+            };
+            btnSliderDown.onclick = function(){
+                Rui.slideDown(box,600);
+            };
+        }
+    })()
+</script>
+</body>
+</html>

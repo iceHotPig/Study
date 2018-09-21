@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>解除绑定事件</title>
+</head>
+<body>
+    <input type="button" id="btnClick" value="绑定事件">
+    <input type="button" id="btnRemove" value="解除绑定事件">
+    <script>
+        var btnClick = document.getElementById('btnClick');
+        var btnRemove = document.getElementById('btnRemove');
+        btnClick.onclick = function(){
+            alert("0级");
+        } 
+        btnClick.addEventListener("click",listener,false);
+       
+        function listener(){
+            alert("2级");
+        }
+        //解绑
+        btnRemove.addEventListener('click',function(){
+            //解绑DOM0级
+            btnClick.onclick = null;
+           //解绑DOM2级
+            btnClick.removeEventListener("click",listener,false);
+        });
+         
+        
+    </script>
+</body>
+</html>

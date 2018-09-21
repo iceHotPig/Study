@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绑定事件案例</title>
+</head>
+<body>
+  <ul>
+      <li>我是li里面的内容1</li>
+      <li>我是li里面的内容2</li>
+      <li>我是li里面的内容3</li>
+      <li>我是li里面的内容4</li>
+      <li>我是li里面的内容5</li>
+      <li>我是li里面的内容6</li>
+  </ul> 
+  <script>
+      //给多有的li标签添加点击事件，并弹出其内容
+      var  li = document.querySelectorAll('li');
+    //   for(var i = 0; i < li.length;i++){
+    //       li[i].onclick = function(){
+    //           alert(this.innerHTML);
+    //       }
+    //   }
+
+      li.forEach(function(item,index){
+          item.onclick = liOnclickHandle;
+          //优化，减少内存消耗多个li公用有个函数；
+      })
+      //li标签点击触发的函数
+      function liOnclickHandle(){
+          alert(this.innerHTML)
+      }
+      //因为li标签的响应事件都是一样的，所以没有必要没循环一次就创建一个事件响应函数的对象
+  </script>
+</body>
+</html>

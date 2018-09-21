@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>阻止默认行为</title>
+</head>
+<body>
+    <a href="http://www.baidu.com" id="linkToBaidu">百度</a>
+    <script>
+        var  linkToBaidu  = document.getElementById('linkToBaidu');
+        linkToBaidu.onclick = function(e){
+            alert("默认跳转被取消了")
+            e = e || window.event;
+            if(e.preventDefault){
+                e.preventDefault();
+            }else{
+                e.returnValue = false;
+            }
+            return false;//返回值给一个false，非常有用，也可以实现阻止默认事件的效果；
+        }
+    </script>
+</body>
+</html>

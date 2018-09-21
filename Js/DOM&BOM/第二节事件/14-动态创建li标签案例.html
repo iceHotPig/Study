@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>动态创建li标签案例</title>
+</head>
+<body>
+    <input type="button" id="btn" value="添加">
+    <ul class="list">
+        
+    </ul>
+    <script>
+        var btnAdd = document.querySelector('#btn');
+        var list = document.querySelector('.list');
+        var  index = 1;
+        btnAdd.addEventListener('click',function(){
+            list.innerHTML +="<li>"+index+"</li>"  ;
+            index++;
+        },false)//ie678都不支持
+    </script>
+</body>
+</html>
