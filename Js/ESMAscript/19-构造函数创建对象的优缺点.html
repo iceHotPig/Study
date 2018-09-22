@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>构造函数创建对象的优缺点</title>
+</head>
+<body>
+    <script>
+        function Cat(name,age){
+            this.name = name;
+            this.age = age;
+            this.run = function(){
+                console.log(this.name+"的年龄是"+this.age);
+            }
+            //当使用new来调用构造函数时；
+            //第一步，创建一个空对象
+            //第二步，把空对象赋值得this；
+            //第三步，执行构造函数里面的代码，并给this属性做赋值初始化
+            //第四步，把新创建的对象返回（如果有返回值，是简单类型直接忽略，还是返回this；如果是引用类型，那么返回引用对象）
+        }
+        //通过构造函数创建对象
+        var c1 = new Cat('dd',13);
+        c1.run();
+        var c2 = new Cat('cc',12);
+        c2.run();
+
+        //优点：
+        // 1.创建对象的时候默认初始化一个属性
+        //2.可以使用 instance 追溯对象的原型和构造函数
+        //c1 instance Cat ; //ture;
+        //c1.constructor ===Cat;
+        //缺点：
+        //对象的方法不能重用。每个对象里面都要存储一个对象的方法，浪费内存
+    </script>
+</body>
+</html>

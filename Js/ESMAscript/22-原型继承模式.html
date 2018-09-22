@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原型继承模式</title>
+</head>
+<body>
+    <!-- 
+        原型问题分析
+
+     -->
+    <script>
+        //动物基类
+        function Animal(age,name){
+            this.age = age;
+            this.name = name;
+        }
+        //在动物基类的原型上添加方法run；
+        Animal.prototype.run = function(){
+            console.log(this.name  +"的年龄"+this.age);
+        }
+        function Cat(age,name){
+            this.age = age;
+            this.name = name;
+        }
+        //原型的继承方式；
+        //Cat.prototype.constructor = Cat
+        Cat.prototype = new Animal();
+        Cat.prototype.constructor = Cat;//因为上面的代码把Cat的prototype指向Animal;
+
+        var c = new Cat(12,"cc");//希望：Cat继承Animal的属性和方法；
+        c.run();//从animal原型上继承方法。
+        //问题：
+        //1,子类的构造函数的参数，不能传递给父类的构造函数;
+        //2,子类的constrcutor发生改变，需要改过来;
+        //3，如果父类里有引用类型的属性，那么所有的子类会共享这个引用类型。
+        
+    </script>
+</body>
+</html>  

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>arguments模拟函数能重载</title>
+</head>
+<body>
+    <script>
+        // arguments模拟函数能重载
+        //创建一个矩形类型，构造函数接受一个参数，返回一个正方形，接受两个参数返回一个长方形
+        function React(){
+            // 如果一个参数返回一个正方形
+            if(arguments.length==1){
+                this.width= arguments[0];
+                this.height= arguments[0];
+            }
+            // 如果两个参数返回一个长方形
+            if(arguments.length==2){
+                this.width= arguments[0];
+                this.height= arguments[1];
+            }
+            this.toString=function(){
+               return "width:"+this.width +" "+ "height:"+this.height
+            }
+        }
+        var  c1 = new  React(10);
+        console.log(c1.toString());
+        var  c2 = new  React(10,20);
+        console.log(c2.toString());
+    </script>
+</body>
+</html>

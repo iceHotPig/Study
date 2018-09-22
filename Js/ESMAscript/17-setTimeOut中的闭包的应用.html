@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>setTimeOut中的闭包的应用</title>
+</head>
+<body>
+    <script>
+        // bom 接受两个参数。第一个是回调函数，第二个是毫秒数 
+        //函数是经过多少毫秒数执行回调函数
+        for(var  i=0; i<10;i++){
+            (function(j){
+                setTimeout(function(){//注册一秒后的代码很快
+                    console.log(j)//函数体在一秒后执行;
+                },1000);
+            })(i) 
+        }
+    </script>
+</body>
+</html>

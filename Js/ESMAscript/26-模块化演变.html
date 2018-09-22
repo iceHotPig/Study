@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模块化演变</title>
+</head>
+<body>
+    <script>
+        function dome(){
+            var  a = b = c = 9;
+        }
+
+        //尝试解决 命名冲突
+        // 第一种尝试：命名空间
+        //a.js rkx;
+        var Shop = {}//顶层命名空间
+        Shop.User = {}//电商的用户模块
+        Shop.User.UserLists = {};//用户列表页面模块  
+        Shop.User.UserLists.length = 19;//用户有19个；
+        
+        // b.js xioami
+        Shop.User.UserDetail = {};//用户详情页面模块  
+        Shop.User.UserDetail.length = 20;//用户详情有19个；
+
+        // 第二种 给单个文件定义的局部变量，都变成局部作用域的变量  
+        //局部作用域；
+
+        (function(){
+            window.Shop ={};
+            window.Shop.User = {}
+        })()
+        //自执行函数和命名空间减少了变量的冲突；
+
+        // 第三种 分装的方法把自己的类分装到自己的框架里面；
+
+        //laoma.js
+
+        (function(w){
+            var laoma = {};
+            laoma.Btn = {
+                getVal:function(){
+                    console.log("val");
+                },
+                setVal:function(){
+                    console.log("val");
+                }
+            }
+            // w.laoma = laoma ;//把laoma这个对象传递给window全局变量;
+        })(window||{});
+
+        //laoma.animate.js
+        //动画组件
+        (function(w){
+            if(!w.laoma){
+                w.laoma = {}
+            }
+            w.laoma.animate = {}
+        })(window||{})
+
+        //laoma.form.js
+        //动画组件
+        (function(w){
+            if(!w.laoma){
+                w.laoma = {}
+            }
+            w.laoma.form = {}
+        })(window||{})
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>函数的执行期上下文</title>
+</head>
+<body>
+    <script>
+        //代码执行之前的时候，就会立即创建一个执行期上下文   Global excution context
+        //创建完成全局的执行期上下文之后，把全局的执行期上下文压入 执行环境栈中
+        function f1(){
+            console.log("f1")
+        }
+        function f2(){
+            console.log("f2");
+            f3();
+        }
+        function f3(){
+            console.log("f3")
+            f4();
+        }
+        function f4(){
+            console.log("f4")
+        }
+        f1();
+        //代码进入f1函数，函数内的代码在执行之前，js执行引擎立即创建一个 f1的执行期上下文 f1 的 Excution Context，立即把这个执行期上下文压入执行环境栈中{excution context（ECS）
+        //f1函数执行完成后， 执行期上下文就从执行环境栈中弹出；
+        f2();//f2()——>f3()-->f4()
+        //f2函数执行之前，创建f2的执行期上下文，并且压栈道执行环境栈中 （ecs）；
+        //因为f2函数也调用了f3函数，在f3函数执行之前也创建了一个执行期上下文，并压栈到执行环境栈中；
+        //因为f3函数调用了f4函数，在f4执行之前也创建一个执行期上下文，并压栈到执行环境栈中，
+        //f4执行完成后f4的执行期上下文出栈
+        //f3执行完成后f3的执行期上下文出栈
+        //f2执行完成后f2的执行期上下文出栈
+        // 最后是全局的执行期上下文出栈
+        //excution context 的存储方式
+    </script>
+</body>
+</html>

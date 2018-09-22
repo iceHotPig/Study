@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>变量提升</title>
+</head>
+<body>
+    <script>
+        var  a = 10;//全局的变量a ，可以全局访问
+        function f1(){
+            // 函数的变量提升；因为在函数执行志强。先创建一个函数的执行期上下文了，（excution context）
+
+            //EC的时候已经将函数里面声明的变量都已经初始化成为了undefined;
+
+            //所以：hossting 的存在，又很多的人有习惯，把函数的所有的变量声明放在函数的头部；
+            console.log(a); // a=>undefined
+            var a = 14;//给局部的变量a赋值 14
+            console.log(a); // a=> 14
+        }
+        f1();
+        console.log(a);// a => 10
+        //特殊：变量声明和函数声明。，同名时，函数的优先级高；
+    </script>
+</body>
+</html>

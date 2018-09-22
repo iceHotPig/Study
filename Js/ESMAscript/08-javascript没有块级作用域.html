@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>没有块级作用域</title>
+</head>
+<body>
+    <Script>
+        for(var i = 0; i<10; i++){
+            console.log(i); //js没有块级作用域所以全局可以访问到i
+        }
+        console.log(i);
+        function f1(){
+            var  t1 = 9;//只能在f1函数内部访问到
+        }
+        f1()
+        console.log(t1);//全局是不能访问到的
+    </Script>
+</body>
+</html>

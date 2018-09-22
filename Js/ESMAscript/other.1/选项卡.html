@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    button{
+        height: 40px;
+        width: 100px;
+        line-height: 40px;
+    }
+    div{
+        height:200px;
+        width:200px;
+        border: 2px solid red;
+    }
+    .active{
+        background-color: yellow;
+        color: blue;
+    }
+</style>
+<body>
+    <button class="active">111</button>
+    <button>222</button>
+    <button>333</button>
+    <div style="display: block">nice to meet you rkx</div>
+    <div style="display: none">hello rkx</div>
+    <div style="display: none">goodbye rkx</div>
+    <span style="border:1px solid #000; ">hello</span>
+</body>
+<script src="1.js"></script>
+    <script>
+        var btn =document.getElementsByTagName('button'),
+            div =document.getElementsByTagName('div'),
+            lenb = btn.length,
+            lend =  div.length;
+        for (var i = 0; i<lenb;i++){
+            (function (n) {
+                btn[n].onclick = function () {
+                    for(var i=0;i<lenb;i++){
+                        btn[i].className = '';
+                        div[i].style.display ='none'
+                    }
+                    this.className = 'active';
+                    div[n].style.display ='block';
+                }
+            }(i))
+        };
+        console.log(getStyle(span,'background'));
+    </script>
+</html>

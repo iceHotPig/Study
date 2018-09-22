@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>值类型和引用类型</title>
+</head>
+<body>
+    <script>
+        var  a = 9, 
+             b,
+             c ={age:9} ,
+             d;  
+        //把a值类型赋值给b
+        b = a;
+        b = 19;
+        console.log(a) //9
+        console.log(b) //19
+        //如果是引用类型赋值操作
+        d = c;
+        d.age = 22;
+        //修改了d的age属性；那么c 的age属性是多少？
+        console.log(d.age);//22
+        console.log(c.age);//22
+        // 注意 如果是引用类型的赋值操作：是将引用类型的堆上的内存地址进行了复制。也就会这两个数据引用同一个内存空间，如果其中一个发生了改变，另一个也会发生改变；    
+    </script>
+</body>
+</html>

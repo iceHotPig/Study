@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原型式继承</title>
+</head>
+<body>
+    <script>
+       function object(o){
+           function F(){}
+           F.prototype = o;//让空函数的原型指向o对象。
+           return new F();//创建一个f实例，f的内部原型指向o对象；
+       }
+       var m = {
+           name : 'rkx',
+           age : 19,
+           friends : [
+               "xxx",
+               "yyy"
+           ]
+       }
+       var  m1 = object(m);
+       console.log(m1.friends);
+       m1.name = 'kkk';
+       //优点：
+       //不需要使用new构造函数就可以直接构造另外其他对象。
+       //缺点
+       //对象里面的引用类型，会共享;
+    </script>
+</body>
+</html>

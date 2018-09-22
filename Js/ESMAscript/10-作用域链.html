@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>作用域链</title>
+</head>
+<body>
+    <script>
+        var t = 0,
+            m = 10;
+        var res = fParent(t,m);
+        console.log(res);
+        function fParent(a,b){
+            var  vParent = "parent";
+            function fChild(    c){
+                var vChild = 'child';
+                return c + vChild;
+            }
+            return  a + b + vParent +fChild(a)
+            // return 0 + 10 + "parent" + 0 +'child'
+        }
+            
+    </script>
+</body>
+</html>

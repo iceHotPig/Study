@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div></div>
+</body>
+    <script>
+        var num = 1;
+        var oDIv = document.getElementsByTagName('div')[0];
+            oDIv.style.height = '100px';
+            oDIv.style.width = '100px';
+            oDIv.style.backgroundColor = 'red';
+            oDIv.onclick = function () {
+                num++;
+                if (num%2 == 1){
+                    oDIv.style.backgroundColor = 'red';
+                }else{
+                    oDIv.style.backgroundColor = 'green';
+                };
+            }
+
+    </script>
+</html>

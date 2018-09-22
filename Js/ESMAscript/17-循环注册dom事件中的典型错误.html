@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>循环注册dom事件中的典型错误</title>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <script>
+        // 循环注册dom事件中的典型错误;自执行函数传递变量i;
+        var lis =document.getElementsByTagName('li');
+        for(var i = 0;i<lis.length;i++){
+            (function(j){
+                lis[j].onclick=function(e){
+                    console.log(j)
+                }
+            })(i) //传参数是做的值得复制，做的副本；
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>函数参数分装</title>
+</head>
+<body>
+    <script>
+        // 函数参数分装
+        //一个函数： 分装一个矩形。 矩形： x y坐标，width height 背景颜色 ， 文字信息 ，文字的坐标 文字字体的颜色
+        //用形参处理矩形的参数
+        function rect(x,y,width,height,bgColor,text ,text_color ,text_x,text_y){
+        }
+
+        //如果函数的参数很多带来的问题
+            // 开发人员很难记忆形参的个数
+            // 如果传参的时候顺序写错，会出现错误
+            // 编写代码不方便
+            // 不利于后期的维护
+        // 解决方法 把这些形参分装成一个对象进行处理
+        function rect2(rectopObj){
+            console.log(rectopObj.x +' '+rectopObj.y)
+        }
+        //rectopObj
+        var  rectopObj = {
+            x:19,
+            y:20,
+            width:200,
+            height:20,
+            bgColor:'#fff',
+            text:'lame3n'
+        }
+        rect2(rectopObj)
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>原型链基本链接关系</title>
+</head>
+<body>
+    <script>
+        // 原型链基本链接关系
+        // Object构造函数   
+        //Object.prototype   object 原型对象 有个属性constructor指向构造函数   其有方法 .toString() .valueOf() ...;
+        var  f = new Object();//对象实例 有_proto_ 私有属性；（null除外）
+        f.age = 20;
+        f.toString();//原型上的方法；
+        function Dog(){
+            this.age = 20;
+        }
+        Dog.prototype.weigth = 20;
+        // 创建对象实例
+        var  d = new Dog();
+        // console.log(d.weigth);
+        console.log("对象的原型链")
+        console.log(d.__proto__==Dog.prototype);
+        console.log(Dog.prototype.__proto__==Object.prototype);
+        console.log(Object.prototype.__proto__==null);
+
+        console.log("函数的原型链")
+        console.log(Dog.__proto__==Function.prototype);
+        console.log(Function.prototype.__proto__==Object.prototype);
+        console.log(Object.prototype.__proto__==null);
+    </script>
+</body>
+</html>

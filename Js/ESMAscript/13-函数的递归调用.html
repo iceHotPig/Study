@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数的递归调用</title>
+</head>
+<body>
+    <script>
+        // 求1到100 的和使用递归实现
+
+        //常规方法；
+        var sum=0;
+        for(var i=1;i<=100;i++){
+            sum+=i;
+        }
+        console.log(sum);
+
+        // 递归方法
+        function sumNum(num){
+            //递归一定要有一个结束调用自己的出口；
+            if(num<=1){
+                return num//函数只要执行 return 当前函数就立即结束执行
+            }
+            // 实现函数自己调用函数
+            return sumNum(num-1) + num;
+            // return arguments.callee(num-1) + num; arguments.callee 也是可以代表函数自己，但是在严格模式下会报错;
+        }
+        console.log(sumNum(100));
+
+        //用递归的方法实现n的阶乘
+        function  factorial(n){
+            //设置出口
+            if(n==0||n==1){
+                return 1;
+            }
+            //实现函数
+            return n*factorial(n-1);
+        }
+        console.log(factorial(10));
+
+        //求f(n)的斐波那契数列值 f(m)=f(m-1)+f(m-2) m>=3;
+        function Fibonacci(m){
+            //设置出口
+            if(m==1){
+                return 1;
+            }
+            if(m==0){
+                return 0;
+            }
+            //实现函数
+            return Fibonacci(m-1)+Fibonacci(m-2)
+        }
+        console.log(Fibonacci(9));
+    </script>
+</body>
+</html>

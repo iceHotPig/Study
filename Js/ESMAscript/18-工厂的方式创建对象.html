@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>工厂的方式来创建对象</title>
+</head>
+<body>
+    <script>
+        //工厂的方式来创建对象的方法：
+        //优点：可以重复创建相类似的对象。
+        //缺点：1，对象的原型不能确认具体的类型，对象的狗子揍函数也不明确；
+        //     2,对象的方法不能重复用，每一个对象的内存中都存储一个函数对象的内存；
+
+        function createCat(age,name){//工厂模式就是标准化的生成默认对象的方法；
+            var o = {}
+            o.age = age;
+            o.name = name;
+            o.run = function (){
+                console.log(this.name+'的年龄是'+this.age);
+            }
+            return o;
+        }
+        var c1 = new createCat(12,'cat1');
+        var c2 = new createCat(13,'cat2');
+        c1.run();
+        c2.run();
+    </script>
+</body>
+</html> 

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数的参数</title>
+</head>
+<body>
+<script>
+    function max(a,b){
+        console.log(arguments)
+        for(var i=0; i<arguments.length;i++){
+            console.log(arguments[i])
+        }
+        if(a>b){
+            return a;
+        }else{
+            return b;
+        }
+        //每一个函数的内部都可以直接访问argunments，里面就是存放着我们传递给函数的参数
+        //arguments 不是一个数组，但是他的属性 是从 0,1,2.....开始的是一个类数组
+        //arguments 有一个length属性，属性值的长度，就是我们传递实参的个数。
+    }
+    console.log(max(1, 3))
+    console.log(max(1, 3,12,34))
+    //实现Max方法可以接受任意多的参数，传递出来最大的参数
+    function myMax(){
+        if(arguments.length<0){
+                return NaN
+        }
+        var  max = arguments[0];
+        for(var i = 1; i<arguments.length; i++){
+            if(max<arguments[i]){
+                max = arguments[i]
+            }
+        }
+        return max;
+    }
+    console.log(myMax(2,4,6,7,35))
+</script>
+    
+</body>
+</html>

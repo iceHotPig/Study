@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //原型式继承的方法；
+        function object(o){
+           function F(){}
+           F.prototype = o;//让空函数的原型指向o对象。
+           return new F();//创建一个f实例，f的内部原型指向o对象；
+        }
+        //寄生继承的方式： 其实就是传一个对象到一个方法（工厂方法），方法的内部
+        //根据传来的对象构造一个新对象，并对新对象进行扩展怎强，最后返回新对象。
+        function CreatPersion(p){
+            var  o = object(p);
+            o.say = function(){
+                console.log('hi');
+            }
+            return 0;
+        }
+    </script>
+</body>
+</html>

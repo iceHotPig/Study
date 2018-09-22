@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var t = 9; //全局作用域，全部都可以访问
+        function f1() { //f1函数全局作用域
+            var t2 = 10; //t2 是f1函数内部可以访问
+            console.log(t);
+
+            function f2() { //f2函数是f1函数的作用域
+                var t3 = 200; //t3只能在f2函数里面访问
+                console.log(t2);
+                return t2 * t2; //f2函数可以访问f1函数的作用域及f2自己内部的变量
+            }
+            return f2();
+        }
+        var m = f1();
+        console.log(m);
+    </script>
+</body>
+
+</html>

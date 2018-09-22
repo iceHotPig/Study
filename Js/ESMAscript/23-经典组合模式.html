@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>经典组合模式</title>
+</head>
+<body>
+    <script>
+        //组合的是原型继承和借用构造函数继承
+        
+        //父类 
+        function Animal(age,name){
+            this.age = age;
+            this.name = name;
+            this.foods = ['水','苹果'];
+        }
+        //在父类的原型上创建一个run 方法；
+        Animal.prototype.run = function(){
+            console.log(this.age+"岁的"+this.name+"喜欢吃"+this.foods[1]);
+        }
+        
+        //定义 子类
+        function Cat(age,name){
+            //Animal (age,name);//this===window ;函数的执行模式this==window
+            //this==c
+            Animal.call(this,age,name);//借用父类的构造函数，给子类创建实例属性
+        }
+        //二次执行父类的构造函数。
+        Cat.prototype = new Animal();//组合原型继承模式
+        Cat.prototype.constructor = Cat;
+
+        var c = new Cat(12,'cc');
+        c.run();
+    </script>
+</body>
+</html> 

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+</body>
+<script>
+
+        var speed = 5;
+            newDiv =document.createElement('div'),
+            Obody = document.getElementsByTagName('body')[0];
+            Obody.appendChild(newDiv);
+            Odiv = document.getElementsByTagName('div')[0];
+        with(Odiv.style){
+           height = "100px";
+           width = "100px";
+           backgroundColor = "red";
+           position = "absolute";
+           left = "0";
+           top = "0";
+        }
+        document.onkeydown = function (e) {
+            console.log(e);
+            switch (e.which){
+                case 38:
+                    Odiv.style.top = parseInt(Odiv.style.top)  - 5 +"px"
+                    break;
+                case 40:
+                    Odiv.style.top = parseInt(Odiv.style.top)  + 5 +"px"
+                break;
+                case 37:
+                    Odiv.style.left = parseInt(Odiv.style.left) - 5 +"px"
+                    break;
+                case 39:
+                    Odiv.style.left = parseInt(Odiv.style.left)  + 5 +"px"
+                    break;
+            }
+        }
+</script>
+</html>

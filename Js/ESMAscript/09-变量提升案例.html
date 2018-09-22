@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>变量提升案例</title>
+</head>
+<body>
+    <script>
+        //  案例1
+        // var a= 18;
+        // function d(){
+        //     console.log(a);//undefined
+        //     var a= {
+        //         age:9
+        //     }
+        //     console.log(a);//obj
+        // }
+        // d();
+        // console.log(a);//18
+
+        // //  案例2
+        // if(!("a" in window)){
+        //     var a = 1;
+        // }
+        // console.log(a);//a is undefined
+
+        // //  案例3
+        // console.log(a);//function
+        // var a = 20;
+        // console.log(a);//20
+        // function a(){};
+
+        //  案例4
+        // f();
+        // console.log(a);//a is not defined a没有定义
+        // console.log(b);//不执行
+        // console.log(c);//不执行
+        // function f(){
+        //     var a = b = c = 9;
+        //     console.log(a);//9
+        //     console.log(b);//9
+        //     console.log(c);//9
+        // }
+
+        //  案例5
+        //   f();
+        //   function f(){
+        //       for(var k = 0; k< 10; k++){
+        //         console.log(k)  // 0-->9
+        //       }
+        //       console.log(k);//10
+        //   }
+    </script>
+</body>
+</html>
