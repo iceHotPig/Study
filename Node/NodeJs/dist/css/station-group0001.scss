@@ -1,0 +1,414 @@
+
+$brand     :       #fbc412;
+$brand-bg  :       #c1bcbc;
+$brand-mark :       #fb2222;
+/**
+ * Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/)
+ * http://cssreset.com
+ */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video, input {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font-weight: normal;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* custom */
+a {
+  color: #7e8c8d;
+  text-decoration: none;
+  -webkit-backface-visibility: hidden;
+}
+
+li {
+  list-style: none;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track-piece {
+  background-color: rgba(0, 0, 0, 0.2);
+  -webkit-border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+  height: 5px;
+  background-color: rgba(125, 125, 125, 0.7);
+  -webkit-border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+  width: 5px;
+  background-color: rgba(125, 125, 125, 0.7);
+  -webkit-border-radius: 6px;
+}
+
+html, body {
+  width: 100%;
+}
+
+body {
+  -webkit-text-size-adjust: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+
+.pull-left {
+  float: left;
+}
+
+.pull-right {
+  float: right;
+}
+
+.clearfix {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+.center-block{
+  display: block;
+  margin-right:auto;
+  margin-left:auto;
+  width: 1200px;
+}
+//sg0001-header start
+.sg0001-header{
+  padding: 50px 0;
+  border-bottom:24px solid $brand;
+  text-align: center;
+  .center-inlineblock{
+    display: inline-block;
+    .sg0001-logo{
+      display: inline-block;
+      vertical-align: top;
+      img{
+        height: 66px;
+      }
+    }
+    .sg0001-navbar{
+      display: inline-block;
+      vertical-align: top;
+      margin-left: 90px;
+      margin-top: 26px;
+      font-size: 0;
+      .item-active{
+        background-color:$brand;
+      }
+      li{
+        padding: 5px 12px;
+        font-size: 14px;
+        display: inline-block;
+        vertical-align: top;
+        margin-right: 16px;
+        &:hover{
+          background-color:$brand;
+        }
+        a{
+          color: #424242;
+        }
+      }
+    }
+  }
+
+}
+//sg0001-banner start
+.sg0001-banner{
+  position: relative;
+  height:320px;
+  background:url("../images/banner-bg.png");
+  -webkit-background-size: cover;
+  background-size:cover;
+  &::after{
+    display:block;
+    content: '';
+    position: absolute;
+    top: 60px;
+    left:66.6%;
+    height: 193px;
+    width: 0;
+    border-left: 1px solid $brand;
+  }
+  &::before{
+    display:block;
+    content: '';
+    position: absolute;
+    top:60px;
+    left:33.3%;
+    height: 193px;
+    width: 0;
+    border-right: 1px solid $brand;
+  }
+  .previous-btn{
+    position: absolute;
+    top:50%;
+    margin-top: -26px;
+    left: 3px;
+    height: 52px;
+    width: 52px;
+    border:1px solid $brand;
+    border-radius: 100px;
+    text-align: center;
+    line-height: 52px;
+    color: #fff;
+    cursor: pointer;
+  }
+  .next-btn{
+    position: absolute;
+    top:50%;
+    margin-top: -26px;
+    right: 3px;
+    height: 52px;
+    width: 52px;
+    border:1px solid $brand;
+    border-radius: 100px;
+    text-align: center;
+    line-height: 52px;
+    color: #fff;
+    cursor: pointer;
+  }
+  .sg0001-banner-detail{
+    overflow: hidden;
+    ul{
+      position: relative;
+      margin-top: 50px;
+      font-size: 0;
+      white-space: nowrap;
+      li{
+        font-size: 14px;
+        display: inline-block;
+        width: 200px;
+        border: 1px solid $brand;
+        text-align: center;
+        margin-right: 100px;
+        margin-left: 100px;
+        color: $brand;
+        &:hover{
+          background:rgba(251,196,18,.3);
+          color: white;
+        }
+        dl{
+          padding-bottom: 20px;
+
+          dt{
+            width: 165px;
+            display: inline-block;
+            background: $brand;
+            font-size: 30px;
+            padding: 16px 0;
+            color:#fff;
+          }
+          dd{
+            margin-top: 30px;
+            font-size: 20px;
+          }
+        }
+      }
+    }
+  }
+
+}
+//sg0001-content
+.sg0001-content{
+  box-sizing: border-box;
+  margin-top: 15px;
+  .sg0001-content-detail{
+    padding: 15px;
+    box-sizing: border-box;
+    width: 850px;
+    min-height: 100px;
+    background-color:$brand-bg;
+    .content-detail-title{
+      border:1px solid $brand;
+      color: #fcfcfc;
+      h2{
+        width: 100%;
+        text-align: center;
+        height: 50px;
+        line-height: 50px;
+        background: $brand;
+        font-size: 18px;
+      }
+      .content-text{
+        padding:15px 40px;
+        box-sizing: border-box;
+        font-size: 14px;
+        p{
+          line-height: 30px;
+          span{
+            color:#fe0404;
+          }
+        }
+      }
+    }
+    .content-detail-info{
+      margin-top: 30px;
+      border:1px solid $brand;
+      min-height: 100px;
+      padding: 15px 40px;
+      .detail-info-text{
+        margin-bottom: 30px;
+        color: #fcfcfc;
+        p{
+          line-height: 30px;
+          &:last-child{
+            text-indent: 28px;
+          }
+        }
+      }
+    }
+  }
+  .sg0001-content-history{
+    width: 335px;
+    min-height: 100px;
+    .content-history-save{
+      width: 100%;
+      border:1px solid $brand;
+      box-sizing: border-box;
+      p{
+        margin: 30px 0;
+        text-align: center;
+        color:$brand;
+        font-size: 20px;
+      }
+      button{
+        padding: 14px;
+        text-align: center;
+        border:none;
+        outline: none;
+        width: 100%;
+        background-color: $brand;
+        font-size: 30px;
+        color: #fffdef;
+        cursor: pointer;
+      }
+
+    }
+    .content-history-num{
+      margin-top: 15px;
+      width: 100%;
+      border:1px solid $brand;
+      box-sizing: border-box;
+      text-align: center;
+      min-height: 670px;
+      h2{
+        padding: 14px;
+        box-sizing: border-box;
+        text-align: center;
+        border:none;
+        outline: none;
+        width: 100%;
+        background-color: $brand;
+        font-size: 20px;
+        color: #fffdef
+      }
+      ul{
+        display: inline-block;
+        color:$brand;
+        li{
+          margin-top: 15px;
+        }
+      }
+    }
+  }
+}
+.sg0001-footer{
+  overflow: hidden;
+  background: #222222;
+  padding: 30px;
+  p{
+    text-align: center;
+    color:$brand-mark;
+    font-size: 12px;
+    line-height: 1.4;
+  }
+}
+//fbc412
+.sg0001-history-plan{
+  border:1px solid $brand;
+  margin-top: 20px;
+  .sg0001-history-plan-title{
+    text-align: center;
+    background-color:$brand;
+    padding: 15px;
+    font-size: 16px;
+    color: #ffffff;
+    button{
+      background-color: $brand-mark;
+      border: none;
+      outline: none;
+      color: #ffffff;
+      border-radius: 3px;
+    }
+  }
+  .sg0001-history-plan-detail{
+    padding:20px 40px;
+    box-sizing: border-box;
+    border-bottom: 1px dashed $brand;
+    li{
+     padding: 8px 40px;
+      box-sizing: border-box;
+      font-size: 16px;
+      span{
+        font-size: 16px;
+        margin: 0 10px;
+      }
+    }
+  }
+  .sg0001-history-plan-last{
+    padding: 0 80px;
+    p{
+      height: 30px;
+      line-height: 30px;
+      span{
+        color:$brand-mark;
+      }
+    }
+  }
+}
