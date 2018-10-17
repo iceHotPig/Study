@@ -1,0 +1,32 @@
+{
+    "course":[
+        {
+            "id":1000,
+            "course_name":"Lucy",
+            "author":"袁明",
+            "college":"晋级便总是",
+            "categroy_id":2
+        },
+        {
+            "id":1001,
+            "course_name":"Lucy",
+            "author":"袁明",
+            "college":"晋级便总是",
+            "categroy_id":2
+        },
+        {
+            "id":1002,
+            "course_name":"Lucy",
+            "author":"袁明",
+            "college":"晋级便总是",
+            "categroy_id":2
+        },
+        {
+            "id":1003,
+            "course_name":"Lucy",
+            "author":"袁明",
+            "college":"晋级便总是",
+            "categroy_id":2
+        }
+    ]
+}
