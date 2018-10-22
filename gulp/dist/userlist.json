@@ -1,0 +1,1 @@
+{ "users": [{ "name": "Lucy", "password": 123456, "id": 1, "college": "北京大学" }, { "name": "Lily", "password": 123456, "id": 2, "college": "北京大学" }, { "name": "John", "password": 123456, "id": 3, "college": "清华大学" }, { "name": "Selina", "password": 123456, "id": 4, "college": "清华大学" } ] }

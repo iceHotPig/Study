@@ -1,0 +1,21 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Cache Editor for DataGrid - jQuery EasyUI Demo</title><link rel="stylesheet" href="../../themes/default/easyui.css"><link rel="stylesheet" href="../../themes/icon.css"><link rel="stylesheet" href="../demo.css"><script src="../../jquery.min.js"></script><script src="../../jquery.easyui.min.js"></script></head><body><h2>Cache Editor for DataGrid</h2><p>This example shows how to cache the editors for datagrid to improve the editing speed.</p><div style="margin:20px 0"></div><table id="dg" class="easyui-datagrid" title="Cache Editor for DataGrid" style="width:700px;height:auto" data-options="
+				iconCls: 'icon-edit',
+				singleSelect: true,
+				toolbar: '#tb',
+				url: 'datagrid_data1.json',
+				method: 'get',
+				onClickRow: onClickRow
+			"><thead><tr><th data-options="field:'itemid',width:80">Item ID</th><th data-options="field:'productid',width:100,
+						formatter:function(value,row){
+							return row.productname;
+						},
+						editor:{
+							type:'combobox',
+							options:{
+								valueField:'productid',
+								textField:'productname',
+								method:'get',
+								url:'products.json',
+								required:true
+							}
+						}">Product</th><th data-options="field:'listprice',width:80,align:'right',editor:{type:'numberbox',options:{precision:2}}">List Price</th><th data-options="field:'unitcost',width:80,align:'right',editor:{type:'numberbox',options:{precision:2}}">Unit Cost</th><th data-options="field:'attr1',width:250,editor:'text'">Attribute</th><th data-options="field:'status',width:60,align:'center',editor:{type:'checkbox',options:{on:'P',off:''}}">Status</th></tr></thead></table><div id="tb" style="height:auto"><a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-save',plain:true" onclick="accept()">Accept</a> <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-undo',plain:true" onclick="reject()">Reject</a> <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true" onclick="getChanges()">GetChanges</a></div><script>!function(o){function c(d){var i=o(d).closest("div.datagrid-view"),a=i.children("div.datagrid-editor-cache");return a.length||(a=o('<div class="datagrid-editor-cache" style="position:absolute;display:none"></div>').appendTo(i)),a}var d=o.fn.datagrid.defaults.editors;for(var i in d){var a=d[i];!function(){var r=a.init;a.init=function(d,i){var a,e=o(d).closest("td[field]").attr("field"),t=(a=e,c(d).children("div.datagrid-editor-cache-"+a));return t.length?(t.appendTo(d),t.find(".datagrid-editable-input")):r(d,i)}}(),function(){var n=a.destroy;a.destroy=function(d){if(o(d).hasClass("datagrid-editable-input")){var i=o(d).closest("td[field]").attr("field");e=i,t=o(a=d).parent().children(),(r=c(a)).children("div.datagrid-editor-cache-"+e).remove(),o('<div class="datagrid-editor-cache-'+e+'"></div>').appendTo(r).append(t)}else n&&n(d);var a,e,t,r}}()}}(jQuery)</script><script>var editIndex=void 0;function endEditing(){if(null==editIndex)return!0;if($("#dg").datagrid("validateRow",editIndex)){var d=$("#dg").datagrid("getEditor",{index:editIndex,field:"productid"}),e=$(d.target).combobox("getText");return $("#dg").datagrid("getRows")[editIndex].productname=e,$("#dg").datagrid("endEdit",editIndex),!(editIndex=void 0)}return!1}function onClickRow(d){editIndex!=d&&(endEditing()?($("#dg").datagrid("selectRow",d).datagrid("beginEdit",d),editIndex=d):$("#dg").datagrid("selectRow",editIndex))}function accept(){endEditing()&&$("#dg").datagrid("acceptChanges")}function reject(){$("#dg").datagrid("rejectChanges"),editIndex=void 0}function getChanges(){var d=$("#dg").datagrid("getChanges");alert(d.length+" rows are changed!")}</script></body></html>

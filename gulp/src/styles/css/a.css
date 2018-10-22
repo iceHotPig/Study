@@ -1,0 +1,11 @@
+p {
+  text-align: center;
+  font-size: 12px;
+  align-self: center;
+}
+
+div {
+  height: 200px;
+  width: 100%;
+  background-color: red;
+}

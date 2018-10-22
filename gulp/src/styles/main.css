@@ -1,0 +1,15 @@
+p {
+  text-align: center;
+  font-size: 12px;
+  -ms-flex-item-align: center;
+      align-self: center; }
+
+div {
+  height: 200px;
+  width: 100%;
+  background-color: red; }
+
+body {
+  background-color: blue; }
+
+/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImEuY3NzIiwic2Nzcy9iLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxtQkFBa0I7RUFDbEIsZ0JBQWU7RUFDZiw0QkFBa0I7TUFBbEIsbUJBQWtCLEVBQ25COztBQUVEO0VBQ0UsY0FBYTtFQUNiLFlBQVc7RUFDWCxzQkFBcUIsRUFDdEI7O0FDUkQ7RUFDRSx1QkFIVSxFQUlYIiwiZmlsZSI6Im1haW4uY3NzIiwic291cmNlc0NvbnRlbnQiOlsicCB7XHJcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gIGZvbnQtc2l6ZTogMTJweDtcclxuICBhbGlnbi1zZWxmOiBjZW50ZXI7XHJcbn1cclxuXHJcbmRpdiB7XHJcbiAgaGVpZ2h0OiAyMDBweDtcclxuICB3aWR0aDogMTAwJTtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiByZWQ7XHJcbn1cclxuIiwiJGNvbG9yOiBibHVlO1xyXG5cclxuYm9keSB7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogJGNvbG9yO1xyXG59XHJcbiJdfQ== */

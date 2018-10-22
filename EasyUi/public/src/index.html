@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./lib/jquery-easyui-1.5.5.2/themes/bootstrap/easyui.css">
+    <link rel="stylesheet" href="./lib/jquery-easyui-1.5.5.2/themes/icon.css">
+</head>
+<body>
+    <input type="button" id="btnOPenDialog" value="弹出模态对话框">
+    <input type="button" id="btnCloseDialog" value="关闭模态对话框">
+    <div id="dialogWrap" style="display:none"><h3>我是弹出来的对话框</h3></div>
+    <script src="./lib/jquery-easyui-1.5.5.2/jquery.min.js"></script>
+    <script src="   ./lib//jquery-easyui-1.5.5.2/jquery.easyui.min.js"></script>
+    <!--添加一个语言包 -->
+    <script src="./lib/jquery-easyui-1.5.5.2/locale/easyui-lang-zh_CN.js"></script>
+    <script>
+        (function($){
+            $(function(){
+                $('#btnCloseDialog').on('click',function(){
+                    $('#dialogWrap').dialog('close');
+                });
+                //给弹出对话框的按钮绑定点击事件
+                $('#btnOPenDialog').on('click',function(){
+                    $('#dialogWrap').dialog({
+                        width:400,
+                        height:300,
+                        title:"我是弹出摸的标题",
+                        modal:false,
+                        minimizable:true,
+                        maximizable:true,
+                        toolbar:[
+                            {
+                                text:'Edit',
+                                iconCls:'icon-edit',
+                                handler:function(){
+                                    // $.messager.alert('消息的标题','消息的内容','info');
+                                    $.messager.show({
+                                        title:'提示消息',
+                                        msg:'用户添加成功',
+                                        timeout:2000,
+                                        showType:'fade'
+                                    });
+                                }
+                            },
+                            {
+                                    text:'按钮的文字',
+                                    iconCls:'icon-add',
+                                    handler:function(){
+                                        $.messager.alert('消息的标题','消息的内容','warming');
+                                    }
+                            },
+                            {
+                                    text:'删除',
+                                    iconCls:'icon-remove',
+                                    handler:function(){
+                                        $.messager.confirm('删除提醒','你确认要删除这条消息吗',function(r){
+                                            if(r){
+                                               console.log('确认删除')
+                                            }else{
+                                                console.log('取消删除')
+                                            }
+                                        });
+                                    }
+                            }
+                        ],
+                        buttons:[
+                            {
+                                text:'确定',
+                                iconCls:'icon-ok',
+                                handler:function(){
+                                    $.messager.alert('title','cnt','question')
+                                }
+                            },
+                            {
+                                text:'关闭',
+                                iconCls:'icon-cancel',
+                                handler:function(){
+                                    $('#dialogWrap').dialog('close');
+                                }
+                            }
+                        ],
+                        onOpen:function(){
+                            console.log('open');
+                        },
+                        onBeforeClose:function(){
+                            console.log('onBeforeClose')
+                        }  
+                    });
+                });
+            });
+        })(jQuery)
+    </script>
+</body>
+</html>

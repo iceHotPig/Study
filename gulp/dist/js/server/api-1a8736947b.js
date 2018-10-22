@@ -1,0 +1,1 @@
+"use strict";define(["jquery"],function(t){return{getUser:function(e){t.ajax({url:"userlist.json",type:"GET",data:"",datatype:"json",success:e})}}});

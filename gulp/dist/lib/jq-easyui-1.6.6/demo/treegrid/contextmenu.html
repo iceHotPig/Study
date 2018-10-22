@@ -1,0 +1,12 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>TreeGrid ContextMenu - jQuery EasyUI Demo</title><link rel="stylesheet" href="../../themes/default/easyui.css"><link rel="stylesheet" href="../../themes/icon.css"><link rel="stylesheet" href="../demo.css"><script src="../../jquery.min.js"></script><script src="../../jquery.easyui.min.js"></script></head><body><h2>TreeGrid ContextMenu</h2><p>Right click to display the context menu.</p><div style="margin:20px 0"></div><table id="tg" class="easyui-treegrid" title="TreeGrid ContextMenu" style="width:700px;height:250px" data-options="
+				iconCls: 'icon-ok',
+				rownumbers: true,
+				animate: true,
+				collapsible: true,
+				fitColumns: true,
+				url: 'treegrid_data2.json',
+				method: 'get',
+				idField: 'id',
+				treeField: 'name',
+				onContextMenu: onContextMenu
+			"><thead><tr><th data-options="field:'name',width:180">Task Name</th><th data-options="field:'persons',width:60,align:'right'">Persons</th><th data-options="field:'begin',width:80">Begin Date</th><th data-options="field:'end',width:80">End Date</th><th data-options="field:'progress',width:120,formatter:formatProgress">Progress</th></tr></thead></table><div id="mm" class="easyui-menu" style="width:120px"><div onclick="append()" data-options="iconCls:'icon-add'">Append</div><div onclick="removeIt()" data-options="iconCls:'icon-remove'">Remove</div><div class="menu-sep"></div><div onclick="collapse()">Collapse</div><div onclick="expand()">Expand</div></div><script>function formatProgress(e){return e?'<div style="width:100%;border:1px solid #ccc"><div style="width:'+e+'%;background:#cc0000;color:#fff">'+e+"%</div>":""}function onContextMenu(e,t){t&&(e.preventDefault(),$(this).treegrid("select",t.id),$("#mm").menu("show",{left:e.pageX,top:e.pageY}))}var idIndex=100;function append(){idIndex++;var e=new Date,t=new Date;t.setMonth(t.getMonth()+1);var r=$("#tg").treegrid("getSelected");$("#tg").treegrid("append",{parent:r.id,data:[{id:idIndex,name:"New Task"+idIndex,persons:parseInt(10*Math.random()),begin:$.fn.datebox.defaults.formatter(e),end:$.fn.datebox.defaults.formatter(t),progress:parseInt(100*Math.random())}]})}function removeIt(){var e=$("#tg").treegrid("getSelected");e&&$("#tg").treegrid("remove",e.id)}function collapse(){var e=$("#tg").treegrid("getSelected");e&&$("#tg").treegrid("collapse",e.id)}function expand(){var e=$("#tg").treegrid("getSelected");e&&$("#tg").treegrid("expand",e.id)}</script></body></html>
